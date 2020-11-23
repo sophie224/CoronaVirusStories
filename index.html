@@ -23,52 +23,65 @@
     let peoplesInfo=[
         {
             id:0,
-            img_src:'./img/avatar.jpg'
+            img_src:'./img/avatar.jpg',
+            text:'text'
         },
         {
             id:1,
-            img_src:'./img/avatar.jpg'
+            img_src:'./img/avatar.jpg',
+            text:'text1'
         },
         {
             id:2,
-            img_src:'./img/avatar.jpg'
+            img_src:'./img/avatar.jpg',
+            text:'text2'
         },
         {
             id:3,
-            img_src:'./img/avatar.jpg'
+            img_src:'./img/avatar.jpg',
+            text:'text3'
         },
         {
             id:4,
-            img_src:'./img/avatar.jpg'
+            img_src:'./img/avatar.jpg',
+            text:'text4'
         },
         {
             id:5,
-            img_src:'./img/avatar.jpg'
+            img_src:'./img/avatar.jpg',
+            text:'text5'
         },
         {
             id:6,
-            img_src:'./img/avatar.jpg'
+            img_src:'./img/avatar.jpg',
+            text:'text6'
         },
         {
             id:7,
-            img_src:'./img/avatar.jpg'
+            img_src:'./img/avatar.jpg',
+            text:'text7'
         },
         {
             id:8,
-            img_src:'./img/avatar.jpg'
+            img_src:'./img/avatar.jpg',
+            text:'text8'
         },
         {
             id:9,
-            img_src:'./img/avatar.jpg'
+            img_src:'./img/avatar.jpg',
+            text:'text9'
         },
 
     ]
 
 
-    function drawEachManMU(imageSrc){
+    function drawEachManMU(imageSrc,text,index){
         let eachMU=`
-            <div class="avatar">
+            <div class="avatar" id=${index}>
                 <img src="${imageSrc}" alt="" class="">
+                <div class="entry-inner" id=${index}>
+					<h3>${text}</h3>
+				</div>
             </div>
         `
         return eachMU;
@@ -78,6 +91,7 @@
         let eachMU=`
             <div class="non_avatar">
                 <img src="${nonImageSrc}" alt="" class="">
+                
             </div>
         `
         return eachMU;
@@ -86,17 +100,41 @@
         let eachAvatarMU;
         for (let i = 0; i < 600; i++) {
             if(peoplesInfo[i]){
-                eachAvatarMU = drawEachManMU(peoplesInfo[i].img_src);
+                eachAvatarMU = drawEachManMU(peoplesInfo[i].img_src,peoplesInfo[i].text,i);
                 $(".avatars-main-container").append(eachAvatarMU);
             }
             else{
-                let correctImgSrc='./img/circle.jpg';
+                let correctImgSrc='./img/circle.png';
                 eachAvatarMU = drawEachNonInfoMu (correctImgSrc);
                 $(".avatars-main-container").append(eachAvatarMU);
             }
-            console.log(1)
-            
         }
     }
+    
+    $(".avatars-main-container").on("mouseenter", ".avatar", function () {
+        let currentId=parseInt($(this).attr("id"));
+        let getCurrModalBoxClassArr=document.querySelectorAll('.entry-inner');
+        for (let i = 0; i < getCurrModalBoxClassArr.length; i++) {
+            let currentClassId=parseInt($(getCurrModalBoxClassArr[i]).attr("id"));
+            if(currentId===currentClassId){
+                $(getCurrModalBoxClassArr[i]).css("display","block")
+            }
+            else{
+                $(getCurrModalBoxClassArr[i]).css("display","none")
+            }
+            
+        }
+    });
+
+    $(".avatars-main-container").on("mouseleave", ".avatar", function () {
+        let currentId=parseInt($(this).attr("id"));
+        let getCurrModalBoxClassArr=document.querySelectorAll('.entry-inner');
+        for (let i = 0; i < getCurrModalBoxClassArr.length; i++) {
+            let currentClassId=parseInt($(getCurrModalBoxClassArr[i]).attr("id"));
+            $(getCurrModalBoxClassArr[i]).css("display","none");
+            
+            
+        }
+    });
 </script>
 </html>
