@@ -3,9 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
     <title>Corona Virus Stories</title>
 </head>
 <body>
-    
+    <section>
+
+        <div class="avatars-main-container">
+
+        </div>
+    </section>
+
 </body>
+<script>
+    $( document ).ready(function() {
+        mainFuncForMU();
+    });
+    let peoplesInfo=[
+        {
+            id:0,
+            img_src:'./img/avatar.jpg'
+        },
+        {
+            id:1,
+            img_src:'./img/avatar.jpg'
+        },
+        {
+            id:2,
+            img_src:'./img/avatar.jpg'
+        },
+        {
+            id:3,
+            img_src:'./img/avatar.jpg'
+        },
+        {
+            id:4,
+            img_src:'./img/avatar.jpg'
+        },
+        {
+            id:5,
+            img_src:'./img/avatar.jpg'
+        },
+        {
+            id:6,
+            img_src:'./img/avatar.jpg'
+        },
+        {
+            id:7,
+            img_src:'./img/avatar.jpg'
+        },
+        {
+            id:8,
+            img_src:'./img/avatar.jpg'
+        },
+        {
+            id:9,
+            img_src:'./img/avatar.jpg'
+        },
+
+    ]
+
+
+    function drawEachManMU(imageSrc){
+        let eachMU=`
+            <div class="avatar">
+                <img src="${imageSrc}" alt="" class="">
+            </div>
+        `
+        return eachMU;
+
+    }
+    function drawEachNonInfoMu(nonImageSrc){
+        let eachMU=`
+            <div class="non_avatar">
+                <img src="${nonImageSrc}" alt="" class="">
+            </div>
+        `
+        return eachMU;
+    }
+    function mainFuncForMU(){
+        let eachAvatarMU;
+        for (let i = 0; i < 600; i++) {
+            if(peoplesInfo[i]){
+                eachAvatarMU = drawEachManMU(peoplesInfo[i].img_src);
+                $(".avatars-main-container").append(eachAvatarMU);
+            }
+            else{
+                let correctImgSrc='./img/circle.jpg';
+                eachAvatarMU = drawEachNonInfoMu (correctImgSrc);
+                $(".avatars-main-container").append(eachAvatarMU);
+            }
+            console.log(1)
+            
+        }
+    }
+</script>
 </html>
