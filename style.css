@@ -2,27 +2,28 @@
     padding: 0;
     margin: 0;
 }
-/* body{
+body{
     background-color: black;
-} */
+}
 .non_avatar img{
-    width: 70%;
+    width: 34px;
     height: 100%;
-   
+    
 }
 .avatar{
     position: relative;
 }
 .avatar img{
     border-radius: 20px;
-    width: 100%;
+    width: 34px;
     height: 100%;
 }
-.avatar img:hover{
+.avatar-image:hover{
     transform: scale(2.5);
     transition: 1s;
     cursor: pointer;
     display:inline-block;
+    z-index: 5;
 }
 
 .avatars-main-container{
@@ -33,10 +34,18 @@
     margin: 0 auto;
 }
 .avatar,.non_avatar{
-    width: calc(100%/50);
+    width: 35px;
+    height: 34px;
     padding: 2px;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+.non_avatar div{
+    background: #404040;
+    height: 50%;
+    width: 50%;
+    border-radius: 20px;
 }
 .entry-inner{
     color: #666;
@@ -46,14 +55,47 @@
     display: none;
     position: absolute;
     top: 60%;
-    left: calc(50% - 7.5em);
+    left: calc(50% - 8.5em);
     right: auto;
     width: 15em;
     height: auto;
     padding: 50% 1em 1em 1em;
     border-radius: 0.25em;
     background-color: white;
-    transition: 0.25s;
-    box-shadow: 0 0 1em 0.5em rgba(0,0,0,0.25);]
-    z-index: 5;
+    transition: 1s;
+    box-shadow: 0 0 1em 0.5em rgba(0,0,0,0.25);
+    z-index: 4;
+
+}
+.text-section,.text-section1,.text-section2{
+    width: 80%;
+    margin: 0 auto;
+    color: white;
+}
+.text-section p,.text-section1 p,.text-section2 p{
+    font-size: 2rem;
+    padding: 1% 0;
+}
+
+
+
+.vertical-align-header{
+    background-color: #757575;
+    position: fixed;
+    top: 0;
+    height: 70px;
+}
+.avatars-vertical-container{
+    flex-wrap: nowrap;
+    height: 100%;
+    margin: 0;
+}
+.vertical-align-avatars{
+    width: 34px;
+}
+.text-section,.text-section1,.text-section2{
+    margin-top: 10%;
+}
+.active{
+    border:1px solid red;
 }
