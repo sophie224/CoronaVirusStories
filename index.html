@@ -149,11 +149,11 @@
                         $(`.avatar#${currentClassId}`).first().children().addClass('active');
                     }
                 }
- 
-                
+                // $('.vertical-align-avatars').stop().animate({scrollLeft: "+=100"}, 800);
             }
+
         });
-        
+       
 
         let headerConatinerHeight=$(".avatars-main-container").height();
 
@@ -167,6 +167,7 @@
             $('.avatars-main-container').removeClass('avatars-vertical-container');
             $('.avatar').removeClass('vertical-align-avatars');
         }
+        return false;
     }); 
 
     function drawEachManMU(imageSrc,text,index){
