@@ -2,16 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./style.css">
     <title>Corona Virus Stories</title>
 </head>
 <body>
-    <header>
+
+    <article class="main-title">
+        <h1>Lost Mothers</h1>
+        <h2>An estimated 700 to 900 women in the U.S. died from pregnancy-related causes in 2016. We have identified 134 of them so far.</h2>
+        <p>
+            by Nina Martin, ProPublica, Emma Cillekens and Alessandra Freitas, special to ProPublica<br>
+            July 17, 2017 
+        </p>
+    </article>
+
+
+
+    <main>
         <div class="avatars-main-container">
         </div>
-    </header>
+    </main>
     <section class="text-section" id="0">   
         <p>
             The U.S. has the highest rate of maternal mortality in the developed world. Yet these deaths of women from causes related to pregnancy or childbirth are almost invisible. When a new or expectant mother dies, her obituary rarely mentions the circumstances. Her identity is shrouded by medical institutions, regulators and state maternal mortality review committees. Her loved ones mourn her loss in private. The lessons to be learned from her death are often lost as well.
@@ -144,35 +156,42 @@
                 currentSectionId=parseInt($(this).attr('id'));
                 for (let i = 0; i < getCurrModalBoxClassArr.length; i++) {
                     currentClassId=parseInt($(getCurrModalBoxClassArr[i]).attr("id"));
-                    $(`.avatar#${currentClassId}`).first().children().removeClass('active');
+                    $(`.avatar#${currentClassId} img`).removeClass('active');
                     if(currentClassId===currentSectionId){
-                        $(`.avatar#${currentClassId}`).first().children().addClass('active');
+                        $(`.avatar#${currentClassId} img`).addClass('active');
                     }
                 }
-                // $('.vertical-align-avatars').stop().animate({scrollLeft: "+=100"}, 800);
             }
-
+           
         });
+       
+
        
 
         let headerConatinerHeight=$(".avatars-main-container").height();
 
         if ($(window).scrollTop() >= headerConatinerHeight) {
-           $('header').addClass('vertical-align-header');
+           $('main').addClass('vertical-align-header');
            $('.avatars-main-container').addClass('avatars-vertical-container');
            $('.avatar').addClass('vertical-align-avatars');
+           $('.non_avatar').css('display','block');
+           $('.non_avatar').css('display','none')
+
         }
         else {
-            $('header').removeClass('vertical-align-header');
+            $('main').removeClass('vertical-align-header');
             $('.avatars-main-container').removeClass('avatars-vertical-container');
             $('.avatar').removeClass('vertical-align-avatars');
+            $('.avatar img').removeClass('active');
+            $('.non_avatar').css('display','flex');
         }
         return false;
     }); 
 
+  
     function drawEachManMU(imageSrc,text,index){
         let eachMU=`
-            <div class="avatar" id=${index}>
+            <div class="avatar " id=${index}>
                 <img src="${imageSrc}" id=${index} class="avatar-image">
                 <div class="entry-inner" id=${index}>
 					<h3>${text}</h3>
@@ -184,7 +203,7 @@
     }
     function drawEachNonInfoMu(){
         let eachMU=`
-            <div class="non_avatar">
+            <div class="non_avatar ">
                 <div>
                 </div>
             </div>
@@ -200,7 +219,6 @@
             }
             else{
                 let correctImgSrc=drawEachNonInfoMu();
-                // eachAvatarMU = drawEachNonInfoMu (correctImgSrc);
                 $(".avatars-main-container").append(correctImgSrc);
             }
         }
