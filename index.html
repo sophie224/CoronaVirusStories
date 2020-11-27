@@ -10,12 +10,30 @@
 <body>
 
     <article class="main-title">
-        <h1>Lost Mothers</h1>
-        <h2>An estimated 700 to 900 women in the U.S. died from pregnancy-related causes in 2016. We have identified 134 of them so far.</h2>
-        <p>
-            by Nina Martin, ProPublica, Emma Cillekens and Alessandra Freitas, special to ProPublica<br>
-            July 17, 2017 
-        </p>
+        <div class="description-container">
+            <p>
+                უკანასკნელი ერთი თვეა, რაც საქართველოში კორონავირუსით გარდაცვლილთა რიცხვი ყოველდღიურად რამდენიმე ათეულს აღწევს. გარდაცვლილთა შორის არიან როგორც არასრულწლოვნები, ისე ახალგაზრდა, შუა ასაკისა და ხანდაზმული ადამიანები. ყოველი გარდაცვლილის უკან მათი ოჯახი, შვილები, მშობლები დგანან. სიკვდილის მშრალი სტატისტიკა ამბებს, ოცნებებს, სამომავლო გეგმებს მალავს. 
+            </p>
+            <br>
+            <p>
+                აქ წაიკითხავთ იმ ადამიანების შესახებ, რომლებიც COVID19-ით გარდაიცვალნენ და რომელთა ამბებიც ჩვენ შევაგროვეთ.
+            </p>
+            <br>
+            <p>
+                და თუკი გსურთ, რომ თქვენი ახლობლების შესახებაც წაიკითხონ სხვებმა, <a href="">გამოგვიგზავნეთ მათი ამბები</a>. 
+            </p>
+        </div>
+        
+        <div class="authors-container">
+            <h2>ავტორი </h2>
+            <p>ნინო თარხნიშვილი </p>
+            <br>
+            <h2>ილუსტრატორი</h2>
+            <p>ანა ჯიბლაძე</p>
+            <br>
+            <h2>ვებ-დეველოპერი</h2>
+            <p>სოფიკო ფხიკიძე</p>
+        </div>
     </article>
 
 
@@ -168,7 +186,7 @@
 
        
 
-        let headerConatinerHeight=$(".avatars-main-container").height();
+        let headerConatinerHeight=$(".avatars-main-container").height()+$(".main-title").height();
 
         if ($(window).scrollTop() >= headerConatinerHeight) {
            $('main').addClass('vertical-align-header');
@@ -194,7 +212,7 @@
             <div class="avatar " id=${index}>
                 <img src="${imageSrc}" id=${index} class="avatar-image">
                 <div class="entry-inner" id=${index}>
-					<h3>${text}</h3>
+					<h2>${text}</h2>
 				</div>
             </div>
         `

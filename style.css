@@ -18,20 +18,35 @@ body{
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    color: white;
     text-align: center;
     margin: 5.70054% 8.52995% 6.1706%;
 }
-.main-title h1{
+/* .main-title h1{
     font-size: 4.5rem;
 }
 .main-title h2{
     font-size: 2.5rem;
+} */
+.authors-container p{
+    font-size: 1.2rem;
 }
-.main-title p{
-    font-size: 2rem;
+.description-container p{
+    font-size: 1.5rem;
     text-align: center;
-    font-style: italic;
+}
+.authors-container{
+    margin-top: 2%;
+}
+.description-container a{
+    color: #e77454;
+    text-decoration: none;
+}
+.authors-container:before{
+    border-top: 2px solid #e77454;
+    content: "";
+    display: block;
+    margin: 1rem auto;
+    width: 6rem;
 }
 .avatar{
     position: relative;
