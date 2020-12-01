@@ -2,8 +2,36 @@
     padding: 0;
     margin: 0;
 }
+
+@font-face {
+    font-family: 'DejaVuSans';
+    src: url('./fonts/DejaVuSans.woff2') format('woff2'),
+        url('DejaVuSans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DejaVuSans Bold';
+    src: url('./fonts/DejaVuSans-Bold.woff2') format('woff2'),
+    url('DejaVuSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+  
+@font-face {
+    font-family: 'DejaVuSans';
+    src: url('./fonts/DejaVuSans-Bold.woff2') format('woff2'),
+        url('DejaVuSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
 body{
     background-color: black;
+    font-family: 'DejaVuSans',sans-serif;
     color: #999;
     line-height: 1.5;
     overflow-x: hidden;
@@ -35,6 +63,7 @@ body{
     text-align: center;
 }
 .authors-container{
+    width: 100%;
     margin-top: 2%;
 }
 .description-container a{
@@ -46,19 +75,20 @@ body{
     content: "";
     display: block;
     margin: 1rem auto;
-    width: 6rem;
+    width: 25rem;
 }
 .avatar{
     position: relative;
 }
 .avatar img{
-    border-radius: 20px;
-    width: 34px;
+    border-radius: 50%;
+    width: 100%;
     height: 100%;
+    /* border: 2px solid #e77454; */
 }
 .avatar-image:hover{
-    transform: scale(2.5);
-    border: 2px solid #d46f20;
+    transform: scale(2);
+    border: 2px solid white;
 
     transition: 1s;
     cursor: pointer;
@@ -75,17 +105,17 @@ body{
     margin: 0 auto;
 }
 .avatar,.non_avatar{
-    width: 35px;
-    height: 34px;
-    padding: 2px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .non_avatar div{
     background: #404040;
-    height: 50%;
-    width: 50%;
+    height: 40%;
+    width: 40%;
     border-radius: 20px;
 }
 .entry-inner{
@@ -100,13 +130,20 @@ body{
     right: auto;
     width: 15em;
     height: auto;
-    padding: 50% 1em 1em 1em;
+    padding: 5em 1em 1em 1em;
     border-radius: 0.25em;
     background-color: white;
     transition: 1s;
     box-shadow: 0 0 1em 0.5em rgba(0,0,0,0.25);
     z-index: 4;
 
+}
+.entry-inner h2{
+    color: black;
+    line-height: 1.2;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #999;
 }
 .text-section,.text-section1,.text-section2{
     width: 80%;
@@ -143,9 +180,10 @@ body{
     display: flex;
     justify-content: center;
 }
-.vertical-align-avatars{
-    width: 34px;
-}
+/* .vertical-align-avatars{
+    width: 40px;
+} */
+
 .text-section,.text-section1,.text-section2{
     margin-top: 10%;
 }
@@ -155,4 +193,39 @@ body{
 }
 .profile-circle{
     left: 0px;
+}
+.section_common_container{
+    max-width: 50%;
+    text-align: justify;
+    margin: 0 auto;
+}
+.each-history{
+    margin-top: 10%;
+}
+.username{
+    color:white;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 5%;
+}
+.username:before {
+    border-top: 2px solid #c33;
+    content: "";
+    display: block;
+    margin: 1rem auto;
+    width: 50%;
+}
+.text{
+    font-size: 1.8rem;
+}
+.person-image{
+    width: 50%;
+}
+.person-image img{
+    width: 350px;
+    margin: 0 20px 15px 0px;
+    float: left;
+}
+.person-history{
+    font-size: 1.5rem;
 }
