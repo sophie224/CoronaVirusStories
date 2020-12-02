@@ -8,6 +8,15 @@
     <title>Corona Virus Stories</title>
 </head>
 <body>
+    <div class="loader-holder">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+    
+    <header>
+        <div>
+            <img src="./img/logo.png" alt="">
+        </div>
+    </header>
 
     <article class="main-title">
         <div class="description-container">
@@ -45,11 +54,14 @@
     <section class="section_common_container">
         
     </section>
-    
+    <a href="#" id="scroll" style="display: none;"><span></span></a> 
 </body>
 <script>
     $( document ).ready(function() {
         mainFuncForMU();
+        setTimeout(() => {
+			$(".loader-holder").css("display","none");          
+		}, 2000);
     });
     let peoplesInfo=[
         {
@@ -236,11 +248,13 @@
         let currentSectionId;
         let getCurrModalBoxClassArr=document.querySelectorAll('.entry-inner');
         let currentClassId;
-        $('section').each(function () {
+        
+        $('.each-history').each(function () {
             if($(this).position().top <= $(document).scrollTop() && ($(this).position().top + $(this).outerHeight()) > $(document).scrollTop()) {
-                currentSectionId=parseInt($(this).attr('id'));
+                currentSectionId=parseInt($(this).attr('data-id'));
                 for (let i = 0; i < getCurrModalBoxClassArr.length; i++) {
                     currentClassId=parseInt($(getCurrModalBoxClassArr[i]).attr("id"));
+                    
                     $(`.avatar#${currentClassId} img`).removeClass('active');
                     if(currentClassId===currentSectionId){
                         $(`.avatar#${currentClassId} img`).addClass('active');
@@ -249,7 +263,12 @@
             }
            
         });
-       
+
+        if ($(this).scrollTop() > 100) { 
+			$('#scroll').fadeIn(); 
+		} else { 
+			$('#scroll').fadeOut(); 
+		} 
 
        
 
@@ -261,7 +280,7 @@
            $('.avatar').addClass('vertical-align-avatars');
            $('.non_avatar').css('display','block');
            $('.non_avatar').css('display','none')
-
+           $('.avatar-image').css('opacity','0.5')
         }
         else {
             $('main').removeClass('vertical-align-header');
@@ -269,14 +288,26 @@
             $('.avatar').removeClass('vertical-align-avatars');
             $('.avatar img').removeClass('active');
             $('.non_avatar').css('display','flex');
+            $('.avatar-image').css('opacity','1')
         }
         return false;
     }); 
 
-  
+    $('#scroll').click(function(){ 
+		$("html, body").animate({ scrollTop: 0 }, 600); 
+		return false; 
+	}); 
+    $(document).on('click','.avatar-image',function(){
+		let currentAvatarId = $(this).attr('id');
+        $('html,body').animate({
+            scrollTop: $(`.each-history[data-id='${currentAvatarId}']`).offset().top},
+        'slow');
+        
+	}); 
+
     function drawSectionsMU(text,username,image,index){
         let eachSection = `
-            <div class='each-history'>
+            <div class='each-history' data-id="${index}">
                 <div class='username'>
                     ${username}
                 </div>
@@ -319,7 +350,7 @@
     }
     function mainFuncForMU(){
         let eachAvatarMU;
-        for (let i = 0; i < 300; i++) {
+        for (let i = 0; i < 180; i++) {
             if(peoplesInfo[i]){
                 eachAvatarMU = drawEachManMU(peoplesInfo[i].img_src,peoplesInfo[i].userName,peoplesInfo[i].profession,peoplesInfo[i].age,i);
                 $(".avatars-main-container").append(eachAvatarMU);
