@@ -72,17 +72,27 @@ header div img{
 .authors-container p{
     font-size: 1.2rem;
 }
+.description-container {
+    margin-bottom: 7%;
+
+}
 .description-container p{
     font-size: 1.5rem;
     text-align: center;
 }
 .authors-container{
     width: 100%;
-    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .description-container a{
     color: #e77454;
     text-decoration: none;
+}
+.authors-container h2{
+    color:white
 }
 .authors-container:before{
     border-top: 2px solid #e77454;
@@ -229,16 +239,17 @@ header div img{
 .section_common_container{
     max-width: 50%;
     /* text-align: justify; */
-    margin: 15% auto;
+    margin: 5% auto;
 }
-.each-history{
+/* .each-history{
     margin-top: 20%;
-}
+} */
 .username{
     color:white;
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 10%;
+    padding-top:14%;
 }
 .username:before {
     border-top: 2px solid #c33;
