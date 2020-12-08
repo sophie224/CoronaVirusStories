@@ -102,6 +102,7 @@ header div img{
 }
 .avatar-image {
     opacity: 1;
+   
 }
 .avatar-image:hover{
     transform: scale(2);
@@ -111,7 +112,6 @@ header div img{
     cursor: pointer;
     display:inline-block;
     z-index: 5;
-    
 }
 
 .avatars-main-container{
@@ -122,6 +122,7 @@ header div img{
     margin: 0 auto;
 }
 .avatar,.non_avatar{
+    position: relative;
     width: 40px;
     height: 40px;
     padding: 8px;
@@ -172,7 +173,7 @@ header div img{
     padding: 1% 0;
 }
 .info-url a{
-    font-size: 1vw;
+    font-size: 0.7vw;
     color:#e77454;
     font-weight: bold;
     text-decoration: none;
@@ -205,7 +206,7 @@ header div img{
 }
 .vertical-align-avatars{
     width: 30px;
-    height:27px;
+    height:30px;
     padding: 5px;
 }
 .vertical-align-avatars:hover{
@@ -227,7 +228,7 @@ header div img{
 }
 .section_common_container{
     max-width: 50%;
-    text-align: justify;
+    /* text-align: justify; */
     margin: 15% auto;
 }
 .each-history{
@@ -405,9 +406,16 @@ left: 12px;
 
 
 /*responsive*/
+@media only screen and (max-width: 1400px) {
+    .vertical-align-avatars img{
+        height: 25px;
+    }
+    
+}
+
 @media only screen and (max-width: 1080px) {
     .vertical-align-avatars img{
-        height: 30px;
+        height: 19px;
     }
     .section_common_container{
         max-width:80%;
