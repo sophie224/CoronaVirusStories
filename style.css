@@ -228,8 +228,7 @@ header div img{
     margin-top: 10%;
 }
 .active{
-    /* border:1px solid red; */
-    /* border: 2px solid #d46f20; */
+    
     transition: 1s;
     opacity: 1 !important;
 }
