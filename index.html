@@ -512,7 +512,7 @@
         {
             id:37,
             data_id:37,
-            mainUserId:6,
+            mainUserId:7,
             img_src:'./img/7.jpg',
             portrait_img_src:'./img/portrait7(1).jpg',
             userName:' ლევან კაკაურიძე',
@@ -520,6 +520,30 @@
             age:'54 წლის ',
             text:'',
             info_url:''
+        },
+        {
+            id:38,
+            data_id:38,
+            mainUserId:'',
+            img_src:'./img/7.jpg',
+            portrait_img_src:'./img/130548327_723163118315272_8688555862609466068_n.jpg',
+            userName:'თემურ ქევხიშვილი',
+            profession:'ლოტბარი',
+            age:'80 წლის',
+            text:'',
+            info_url:''
+        },
+        {
+            id:39,
+            data_id:38,
+            mainUserId:'',
+            img_src:'./img/7.jpg',
+            portrait_img_src:'./img/130767515_719383099013299_7035142435302675735_n.jpg',
+            userName:'გივი პარასკევაშვილი',
+            profession:'ექიმი',
+            age:'',
+            text:'',
+            info_url:'https://www.radiotavisupleba.ge/a/30992317.html?fbclid=IwAR11E970Vrr0diShFTAKWEXjVlpLlx3Kd9bTzwC9Wjac9dCdc6fiwoQoknU'
         }
     ]
     let personsHistoryArray=[
@@ -642,7 +666,6 @@
        
 
         let headerConatinerHeight=$(".avatars-main-container").height()+$(".main-title").height();
-
         if ($(window).scrollTop() >= headerConatinerHeight) {
            $('main').addClass('vertical-align-header');
            $('.avatars-main-container').addClass('avatars-vertical-container');
@@ -665,18 +688,27 @@
     $('#scroll').click(function(){ 
 		$("html, body").animate({ scrollTop: 0 }, 600); 
 		return false; 
-	}); 
+    }); 
+    
     $(document).on('click','.avatar-image',function(){
         let currentAvatarMainUserId = parseInt($(this).attr('main_user_id'));
-        $('html,body').animate({
-            scrollTop: $(`.each-history[main_user_id=${currentAvatarMainUserId}]`).offset().top},
-        'slow');
+        if ($('.avatars-main-container ').hasClass('avatars-vertical-container')){
+            $('html,body').animate({
+                scrollTop: $(`.each-history[main_user_id=${currentAvatarMainUserId}]`).offset().top},
+            'slow');
+        } else {
+            let headerHeight=$(".avatars-main-container").height();
+            $('html,body').animate({
+                scrollTop: $(`.each-history[main_user_id=${currentAvatarMainUserId}]`).offset().top - (headerHeight + 70)},
+            'slow');
+        }
         
-	}); 
+    }); 
+  
 
-    function drawSectionsMU(text,username,image,index,mainUserId){
+    function drawSectionsMU(text,username,image,index,mainUserId,id){
         let eachSection = `
-            <div class='each-history' main_user_id="${mainUserId}">
+            <div class='each-history' main_user_id="${mainUserId}" id="${id}">
                 <div class='username'>
                     ${username}
                 </div>
@@ -743,7 +775,7 @@
     function drawPersonSection(){
         for (let i = 0; i < personsHistoryArray.length; i++) {
             // console.log("personsHistoryArray[i].mainUserId",personsHistoryArray[i].mainUserId)
-            $(".section_common_container").append(drawSectionsMU(personsHistoryArray[i].text,personsHistoryArray[i].title,personsHistoryArray[i].img_src,i,personsHistoryArray[i].mainUserId));
+            $(".section_common_container").append(drawSectionsMU(personsHistoryArray[i].text,personsHistoryArray[i].title,personsHistoryArray[i].img_src,i,personsHistoryArray[i].mainUserId,i));
             $(`.avatar-image[main_user_id='${i}']`).css('border','2px solid #e77454');
         }
     }

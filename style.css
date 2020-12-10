@@ -237,12 +237,9 @@ header div img{
 }
 .section_common_container{
     max-width: 50%;
-    /* text-align: justify; */
-    margin: 5% auto;
+    margin: 15% auto;
 }
-/* .each-history{
-    margin-top: 20%;
-} */
+
 .username{
     color:white;
     font-size: 2.5rem;
