@@ -237,7 +237,7 @@ header div img{
 }
 .section_common_container{
     max-width: 50%;
-    margin: 15% auto;
+    margin: 5% auto;
 }
 
 .username{
@@ -268,7 +268,9 @@ header div img{
 .person-history{
     font-size: 1.5rem;
 }
-
+footer{
+    margin-bottom: 5%;
+}
 /*scroll to top*/
 
 
@@ -277,8 +279,8 @@ header div img{
     right:10px;
     bottom:10px;
     cursor:pointer;
-    width:50px;
-    height:50px;
+    width: 70px;
+    height: 70px;
     background-color: #cc3333;
     color: #fefeff;
     text-indent:-9999px;
@@ -288,15 +290,15 @@ header div img{
     border-radius:60px
 }
 #scroll span {
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin-left:-8px;
-    margin-top:-12px;
-    height:0;
-    width:0;
-    border:8px solid transparent;
-    border-bottom-color:#ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -11px;
+    margin-top: -19px;
+    height: 1px;
+    width: 0;
+    border: 12px solid transparent;
+    border-bottom-color: #ffffff;
 }
 #scroll:hover {
     background-color:#e74c3c;
@@ -413,16 +415,19 @@ left: 12px;
 
 
 /*responsive*/
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1440px) {
     .vertical-align-avatars img{
         height: 25px;
     }
-    
 }
-
+@media only screen and (max-width: 1280px) {
+    .vertical-align-avatars img{
+        height: 23px;
+    }
+}
 @media only screen and (max-width: 1080px) {
     .vertical-align-avatars img{
-        height: 19px;
+        height: 17px;
     }
     .section_common_container{
         max-width:80%;
