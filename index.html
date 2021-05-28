@@ -2,9 +2,418 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.web-fonts.ge/fonts/dejavu-sans/css/dejavu-sans.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="./style.css">
     <title>Corona Virus Stories</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: black;
+            font-family: 'DejaVu Sans';
+            color: #999;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        header div{
+            width: 100px;
+            margin:0 auto;
+            padding-top: 1%;
+        }
+        header div img{
+            height: 100%;
+            width: 100%;
+        }
+        .non_avatar img{
+            width: 34px;
+            height: 100%;
+            
+        }
+        .project_title{
+            font-size: 2.5vw;
+            margin: 5% auto;
+            color: white;
+        }
+        .main-title{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 0 8.52995% 6.1706%;
+        }
+       
+        .authors-container p{
+            font-size: 1.2rem;
+        }
+        .description-container {
+            margin-bottom: 7%;
+
+        }
+        .description-container p{
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        .authors-container{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .description-container a{
+            color: #e77454;
+            text-decoration: none;
+        }
+        .authors-container h2{
+            color:white
+        }
+        .authors-container:before{
+            border-top: 2px solid #e77454;
+            content: "";
+            display: block;
+            margin: 1rem auto;
+            width: 500px;
+        }
+        .avatar{
+            position: relative;
+        }
+        .avatar img{
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+        .avatar-image {
+            opacity: 1;
+        
+        }
+        .avatar-image:hover{
+            transform: scale(2);
+            border: 2px solid white;
+            opacity: 1 !important;
+            transition: 1s;
+            cursor: pointer;
+            display:inline-block;
+            z-index: 5;
+        }
+
+        .avatars-main-container{
+            width: 90%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 auto;
+        }
+        .avatar,.non_avatar{
+            position: relative;
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .non_avatar div{
+            background: #404040;
+            height: 40%;
+            width: 40%;
+            border-radius: 20px;
+        }
+        .entry-inner{
+             font-family: 'DejaVu Sans';
+            color: #666;
+            font-size: .625rem;
+            text-align: center;
+            display: none;
+            position: absolute;
+            top: 60%;
+            left: calc(50% - 8.5em);
+            right: auto;
+            width: 15em;
+            height: auto;
+            padding: 5em 1em 1em 1em;
+            border-radius: 0.25em;
+            background-color: white;
+            transition: 1s;
+            box-shadow: 0 0 1em 0.5em rgba(0,0,0,0.25);
+            z-index: 4;
+
+        }
+        .entry-inner h2{
+            color: black;
+            line-height: 1.2;
+            padding-bottom: 0.5em;
+            margin-bottom: 0.5em;
+            border-bottom: 1px solid #999;
+        }
+        .text-section,.text-section1,.text-section2{
+            width: 80%;
+            margin: 0 auto;
+            color: white;
+        }
+        .text-section p,.text-section1 p,.text-section2 p{
+            font-size: 2rem;
+            padding: 1% 0;
+        }
+        .info-url a{
+            font-size: 0.7vw;
+            color:#e77454;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .vertical-align-header{
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            height: 70px;
+            width: 100%;
+        }
+        .avatars-vertical-container{
+            height: 100%;
+            margin: 0;
+            position: absolute;
+            height: 100%;
+            flex-wrap: nowrap;
+            width: 100%;
+            top: 0;
+            left: 0;
+            transition: all 500ms;
+            display: flex;
+            justify-content: center;
+        }
+        .vertical-align-avatars{
+            width: 30px;
+            height:30px;
+            padding: 5px;
+        }
+        .vertical-align-avatars:hover{
+            opacity: 1;
+            z-index: 5;
+            transform: scale(1.3);
+        }
+        .text-section,.text-section1,.text-section2{
+            margin-top: 10%;
+        }
+        .active{
+            
+            transition: 1s;
+            opacity: 1 !important;
+        }
+        .profile-circle{
+            left: 0px;
+        }
+        .section_common_container{
+            max-width: 50%;
+            margin: 5% auto;
+        }
+
+        .username{
+            color:white;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2%;
+            padding-top:14%;
+        }
+        .history-age{
+            color:#999;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 5%;
+        }
+        .username:before {
+            border-top: 2px solid #c33;
+            content: "";
+            display: block;
+            margin: 1rem auto;
+            width: 50%;
+        }
+        .text{
+            font-size: 1.8rem;
+        }
+        .person-image{
+            width: 50%;
+        }
+        .person-image img{
+            width: 350px;
+            margin: 0 20px 15px 0px;
+            float: left;
+        }
+        .person-history{
+            font-size: 1.5rem;
+        }
+        footer{
+            margin-bottom: 5%;
+        }
+        /*scroll to top*/
+
+
+        #scroll {
+            position:fixed;
+            right:10px;
+            bottom:10px;
+            cursor:pointer;
+            width: 70px;
+            height: 70px;
+            background-color: #cc3333;
+            color: #fefeff;
+            text-indent:-9999px;
+            display:none;
+            -webkit-border-radius:60px;
+            -moz-border-radius:60px;
+            border-radius:60px
+        }
+        #scroll span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -11px;
+            margin-top: -19px;
+            height: 1px;
+            width: 0;
+            border: 12px solid transparent;
+            border-bottom-color: #ffffff;
+        }
+        #scroll:hover {
+            background-color:#e74c3c;
+            opacity:1;filter:"alpha(opacity=100)";
+            -ms-filter:"alpha(opacity=100)";
+        }
+
+
+        /*scroll to top end*/
+
+
+
+        /*loader*/
+        .loader-holder{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background: white;
+            z-index: 1000;
+        }
+        .lds-roller {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        }
+        .lds-roller div {
+        animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        transform-origin: 40px 40px;
+        }
+        .lds-roller div:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #d56003;
+        margin: -4px 0 0 -4px;
+        }
+        .lds-roller div:nth-child(1) {
+        animation-delay: -0.036s;
+        }
+        .lds-roller div:nth-child(1):after {
+        top: 63px;
+        left: 63px;
+        }
+        .lds-roller div:nth-child(2) {
+        animation-delay: -0.072s;
+        }
+        .lds-roller div:nth-child(2):after {
+        top: 68px;
+        left: 56px;
+        }
+        .lds-roller div:nth-child(3) {
+        animation-delay: -0.108s;
+        }
+        .lds-roller div:nth-child(3):after {
+        top: 71px;
+        left: 48px;
+        }
+        .lds-roller div:nth-child(4) {
+        animation-delay: -0.144s;
+        }
+        .lds-roller div:nth-child(4):after {
+        top: 72px;
+        left: 40px;
+        }
+        .lds-roller div:nth-child(5) {
+        animation-delay: -0.18s;
+        }
+        .lds-roller div:nth-child(5):after {
+        top: 71px;
+        left: 32px;
+        }
+        .lds-roller div:nth-child(6) {
+        animation-delay: -0.216s;
+        }
+        .lds-roller div:nth-child(6):after {
+        top: 68px;
+        left: 24px;
+        }
+        .lds-roller div:nth-child(7) {
+        animation-delay: -0.252s;
+        }
+        .lds-roller div:nth-child(7):after {
+        top: 63px;
+        left: 17px;
+        }
+        .lds-roller div:nth-child(8) {
+        animation-delay: -0.288s;
+        }
+        .lds-roller div:nth-child(8):after {
+        top: 56px;
+        left: 12px;
+        }
+        @keyframes lds-roller {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+        }
+
+
+        /*loader end*/
+
+
+
+        /*responsive*/
+        @media only screen and (max-width: 1440px) {
+            .vertical-align-avatars img{
+                height: 21px;
+            }
+        }
+        @media only screen and (max-width: 1280px) {
+            .vertical-align-avatars img{
+                height: 23px;
+            }
+        }
+        @media only screen and (max-width: 1080px) {
+            .vertical-align-avatars img{
+                height: 15px;
+            }
+            .section_common_container{
+                max-width:80%;
+            }
+            header div{
+                width: 150px;
+            }
+        }
+
+    </style>
 </head>
 <body>
     <div class="loader-holder">
@@ -13,11 +422,10 @@
     
     <header>
         <div>
-            <a href=""><img src="./img/logo.png" alt=""></a>
+            <a href=""><img src="https://gdb.rferl.org/F45764DF-304F-4FB6-9A46-1511D93C91C3.png?fbclid=IwAR0MPj53FIMj8azjz73BJ0LhMfrAaYQl0wegxHjHb7SWFBhJvWeL7JlA3o8" alt=""></a>
             
         </div>
     </header>
-
     <article class="main-title">
         <div class="project_title">
             <p> ჩემი სიკვდილის მიზეზია COVID-19 </p>
@@ -32,7 +440,7 @@
             </p>
             <br><br>
             <p>
-                თუკი გსურთ, რომ თქვენი გარდაცვლილი ახლობლების ისტორიები უსახო სტატისტიკას გამოეყოს და მათ შესახებ წაიკითხონ, <a href="https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F189165972359%2F%3Fmessaging_source%3Dsource%253Apages%253Amessage_shortlink" target="_blank">გამოგვიგზავნეთ მათი ამბები</a>. 
+                თუკი გსურთ, რომ თქვენი გარდაცვლილი ახლობლების ისტორიები უსახო სტატისტიკას გამოეყოს და მათ შესახებ წაიკითხონ, <a  onClick=sendDialog()  target="_blank">გამოგვიგზავნეთ მათი ამბები</a>. 
             </p>
         </div>
         
@@ -86,7 +494,7 @@
             id:0,
             data_id:0,
             mainUserId:0,
-            portrait_img_src:'./img/portrait2.jpg',
+            portrait_img_src:'https://gdb.rferl.org/7903A706-87AC-408C-91AF-339082A18830.jpg',
             userName:'უშანგ ჩიკვაიძე',
             profession:'თბილისის ხანდაზმულთა პანსიონატის მკვიდრი',
             age:'89 წლის',
@@ -100,7 +508,7 @@
             id:1,
             data_id:1,
             mainUserId:'',
-            portrait_img_src:'./img/lazare.jpg',
+            portrait_img_src:'https://gdb.rferl.org/C0F32024-EF01-4351-B180-A097038B41CD.jpg',
             userName:'ლაზარე',
             profession:'ბორჯომისა და ბაკურიანის ეპისკოპოსი',
             age:'65 წლის',
@@ -112,7 +520,7 @@
             id:2,
             data_id:2,
             mainUserId:2,
-            portrait_img_src:'./img/portrait3.jpg',
+            portrait_img_src:'https://gdb.rferl.org/A8721EBE-E591-4E46-A39D-F348AF33085B.jpg',
             userName:'მამუკა სვანიძე',
             profession:'ვეტექიმი',
             age:'57 წლის',
@@ -123,7 +531,7 @@
             id:3,
             data_id:3,
             mainUserId:3,
-            portrait_img_src:'./img/portrait4.jpg',
+            portrait_img_src:'https://gdb.rferl.org/070AE180-ED35-4BCD-B29D-5216DC06CBD5.jpg',
             userName:'თათია ხურციძე',
             profession:'მეწარმე ',
             age:'34 წლის',
@@ -134,7 +542,7 @@
             id:4,
             data_id:4,
             mainUserId:'',
-            portrait_img_src:'./img/shio.jpg',
+            portrait_img_src:'https://gdb.rferl.org/08ED4853-CA03-4EDF-BB6A-711B239E5369.jpg',
             userName:'შიო სინატაშვილი',
             profession:'მღვდელ-მონაზონი',
             age:'',
@@ -145,8 +553,7 @@
             id:5,
             data_id:5,
             mainUserId:5,
-            img_src:'./img/6.jpg',
-            portrait_img_src:'./img/portrait6.jpg',
+            portrait_img_src:'https://gdb.rferl.org/9C5632F7-24E6-422A-A936-CA5FAB0C5230.jpg',
             userName:'მარიამ (მერი) ხუციშვილი',
             profession:'პენსიონერი ',
             age:'91 წლის',
@@ -157,7 +564,7 @@
             id:6,
             data_id:6,
             mainUserId:'',
-            portrait_img_src:'./img/lia shekiladze.jpg',
+            portrait_img_src:'https://gdb.rferl.org/1575C82D-7CEA-419D-A5CF-3D3BB7C0DD27.jpg',
             userName:'ლია შეყილაძე',
             profession:'ეპიდემიოლოგი',
             age:'62 წლის',
@@ -168,7 +575,7 @@
             id:7,
             data_id:7,
             mainUserId:'',
-            portrait_img_src:'./img/ვახტანგ ფხაკაძე icon.jpg',
+            portrait_img_src:'https://gdb.rferl.org/20CA2C69-23FF-4024-9B2D-3E1E86331E78.jpg',
             userName:'ვახტანგ ფხაკაძე',
             profession:'ბიზნესმენი',
             age:'62 წლის',
@@ -179,7 +586,7 @@
             id:8,
             data_id:8,
             mainUserId:'',
-            portrait_img_src:'./img/daviti.jpg',
+            portrait_img_src:'https://gdb.rferl.org/431EAEF5-1069-48E5-95CE-4A05B9EECFE9.jpg',
             userName:'დავით მაჩიტაძე',
             profession:'წმინდა გიორგის სახელობის ტაძრის მღვდელი',
             age:'44 წლის',
@@ -190,22 +597,18 @@
             id:9,
             data_id:9,
             mainUserId:'',
-            portrait_img_src:'./img/ამბროსი.jpg',
+            portrait_img_src:'https://gdb.rferl.org/1EB8A898-645E-490E-AE3D-932D5C64347F.jpg',
             userName:'ამბროსი მოდებაძე',
             profession:'ექიმი',
             age:'63 წლის',
             text:'',
             info_url:''
-
-            
         },
         {
             id:10,
             data_id:10,
-            
             mainUserId:7,
-            img_src:'./img/10.jpg',
-            portrait_img_src:'./img/portrait10(3).jpg',
+            portrait_img_src:'https://gdb.rferl.org/8D839535-9C87-43AD-9E69-9437957E0A83.jpg',
             userName:'მარგო ქურციკიშვილი',
             profession:'',
             age:'94 წლის',
@@ -216,8 +619,7 @@
             id:11,
             data_id:11,
             mainUserId:8,
-            img_src:'./img/9.jpg',
-            portrait_img_src:'./img/portrait9.jpg',
+            portrait_img_src:'https://gdb.rferl.org/FC17D74B-2AB8-4F54-B80F-3062646A07F7.jpg',
             userName:' ონისე გათენაშვილი',
             profession:'ახალგორელი ექიმი',
             age:'68 წლის',
@@ -228,8 +630,7 @@
             id:12,
             data_id:12,
             mainUserId:9,
-            img_src:'./img/8.jpg',
-            portrait_img_src:'./img/portrait8.jpg',
+            portrait_img_src:'https://gdb.rferl.org/CF317E42-9579-4BE2-A21F-0931B86A5BAF.jpg',
             userName:'ლუდმილა ანუა',
             profession:'სოხუმის საჯარო სკოლის პედაგოგი',
             age:'60 წლის',
@@ -240,8 +641,7 @@
             id:13,
             data_id:13,
             mainUserId:10,
-            img_src:'./img/ანიკო სურმანიძე.jpg',
-            portrait_img_src:'./img/ანიკო სურმანიძე icon.jpg',
+            portrait_img_src:'https://gdb.rferl.org/A571EA54-8C4C-44ED-A6D9-CB8F20B6C946.jpg',
             userName:'ანიკო სურმანიძე',
             profession:'',
             age:'100 წლის',
@@ -252,9 +652,7 @@
             id:14,
             data_id:14,
             mainUserId:1,
-            
-
-            portrait_img_src:'./img/portrait1.jpg',
+            portrait_img_src:'https://gdb.rferl.org/350082E7-F58B-42C5-AF4F-A918ECBDE2C0.jpg',
             userName:'ნათია მსხვილიძე',
             profession:'სასწრაფოს ექიმი',
             age:'45 წლის',
@@ -265,7 +663,7 @@
             id:15,
             data_id:15,
             mainUserId:'',
-            portrait_img_src:'./img/avatar.jpg',
+            portrait_img_src:'https://gdb.rferl.org/A1198706-DF52-405B-AAEF-5F561F95354E.jpg',
             userName:'ისლამ საფაროვი',
             profession:'ბათუმის რესპუბლიკური საავადმყოფოს ექიმი',
             age:'62 წლი',
@@ -276,7 +674,7 @@
             id:16,
             data_id:16,
             mainUserId:'',
-            portrait_img_src:'./img/avatar.jpg',
+            portrait_img_src:'https://gdb.rferl.org/A1198706-DF52-405B-AAEF-5F561F95354E.jpg',
             userName:'თამაზ კაჭკაჭიშვილი',
             profession:'სასწრაფო დახმარების სამცხე-ჯავახეთის სამსახურის უფროსი',
             age:'61 წლის',
@@ -287,7 +685,7 @@
             id:17,
             data_id:17,
             mainUserId:'',
-            portrait_img_src:'./img/maia giorgadze.jpg',
+            portrait_img_src:'https://gdb.rferl.org/6AB7486D-E528-45B9-BACD-170F7B27EC6D.jpg',
             userName:'მაია გიორგაძე',
             profession:'სამტრედიის მე-12 საჯარო სკოლის პედაგოგი',
             age:'51 წლის',
@@ -298,7 +696,7 @@
             id:18,
             data_id:18,
             mainUserId:'',
-            portrait_img_src:'./img/qetioberidze.jpg',
+            portrait_img_src:'https://gdb.rferl.org/07B25B07-F429-4857-BC6C-D8AA6F6543BF.jpg',
             userName:'ქეთი კობერიძე',
             profession:'მოსწავლე',
             age:'15 წლის',
@@ -309,7 +707,7 @@
             id:19,
             data_id:19,
             mainUserId:'',
-            portrait_img_src:'./img/lali balavadze.jpg',
+            portrait_img_src:'https://gdb.rferl.org/C170CDF9-D0CE-45F6-9D04-322F7B3C1D3E.jpg',
             userName:'ლალი ბალავაძეს',
             profession:'ექიმი',
             age:'72 წლის',
@@ -320,7 +718,7 @@
             id:20,
             data_id:20,
             mainUserId:'',
-            portrait_img_src:'./img/besikmikeltadze.jpg',
+            portrait_img_src:'https://gdb.rferl.org/6B95BB13-15AC-41DC-9C3C-4199A738763C.jpg',
             userName:'ბესიკ მიქელთაძე',
             profession:'მსოფლიო ჩემპიონი სამბოში',
             age:'55 წლის',
@@ -331,8 +729,7 @@
             id:21,
             data_id:21,
             mainUserId:6,
-            img_src:'./img/7.jpg',
-            portrait_img_src:'./img/portrait7(2).jpg',
+            portrait_img_src:'https://gdb.rferl.org/634EEF9C-1226-4B88-88CD-E8697A9BBA28.jpg',
             userName:'ირინა მიქაძე',
             profession:'სოფელ კონტუათის საჯარო სკოლის პედაგოგი',
             age:'54 წლის',
@@ -343,7 +740,7 @@
             id:22,
             data_id:22,
             mainUserId:'',
-            portrait_img_src:'./img/zaza imerlishvili.jpg',
+            portrait_img_src:'https://gdb.rferl.org/2ABBED8E-A582-4224-A54E-D99DA7BB094C.jpg',
             userName:'ზაზა იმერლიშვილი',
             profession:'მეან-გინეკოლოგი',
             age:'57 წლის',
@@ -354,7 +751,7 @@
             id:23,
             data_id:23,
             mainUserId:'',
-            portrait_img_src:'./img/viola.jpg',
+            portrait_img_src:'https://gdb.rferl.org/69701E93-2BFD-4740-8838-AE8BF5578019.jpg',
             userName:'ვიოლა ცომაია',
             profession:'ხანდაზმულთა თავშესაფრის ბენეფიციარი',
             age:'82 წლის',
@@ -365,7 +762,7 @@
             id:24,
             data_id:24,
             mainUserId:'',
-            portrait_img_src:'./img/madona takidze.jpg',
+            portrait_img_src:'https://gdb.rferl.org/DF191B3F-26CC-49BD-A8A6-1A3907D1625F.jpg',
             userName:'მადონა ტაკიძე',
             profession:'პედიატრი',
             age:'57 წლის',
@@ -376,7 +773,7 @@
             id:25,
             data_id:25,
             mainUserId:'',
-            portrait_img_src:'./img/tekla tordia.jpg',
+            portrait_img_src:'https://gdb.rferl.org/3AC681DF-A286-4451-8D3A-3E1999B63923.jpg',
             userName:'თეკლა თორდია',
             profession:'',
             age:'19 წლის',
@@ -387,7 +784,7 @@
             id:26,
             data_id:26,
             mainUserId:'',
-            portrait_img_src:'./img/nino gulikashvili.jpg',
+            portrait_img_src:'https://gdb.rferl.org/A95A7354-9552-48BE-BFAB-EC3552E6B27A.jpg',
             userName:'ნინო გულიკაშვილი',
             profession:'',
             age:'24 წლის',
@@ -398,7 +795,7 @@
             id:27,
             data_id:27,
             mainUserId:'',
-            portrait_img_src:'./img/avatar.jpg',
+            portrait_img_src:'https://gdb.rferl.org/A1198706-DF52-405B-AAEF-5F561F95354E.jpg',
             userName:'რუსუდან კოკობინაძე',
             profession:'',
             age:'31 წლის',
@@ -409,7 +806,7 @@
             id:28,
             data_id:28,
             mainUserId:'',
-            portrait_img_src:'./img/ნაზი ხალვაში.jpg',
+            portrait_img_src:'https://gdb.rferl.org/1F448A26-1C43-484B-A725-BCC335B1311B.jpg',
             userName:'ნაზი ხალვაში',
             profession:'დიასახლისი',
             age:'88 წლის',
@@ -420,21 +817,18 @@
             id:29,
             data_id:29,
             mainUserId:4,
-            img_src:'./img/5.jpg',
-            portrait_img_src:'./img/portrait5.jpg',
+            portrait_img_src:'https://gdb.rferl.org/5B0D9B4B-D216-4481-B9FC-4FFBE3AC928B.jpg',
             userName:'მანანა ბარამიძე',
             profession:'პენსიონერი ',
             age:'73 წლის',
             text:'',
             info_url:''
-
-            
         },
         {
             id:30,
             data_id:30,
             mainUserId:'',
-            portrait_img_src:'./img/kirion.jpg',
+            portrait_img_src:'https://gdb.rferl.org/386998A8-541F-40B9-BE76-8F19E0743BAE.jpg',
             userName:'კირიონ ადეიშვილ',
             profession:'ბერ-დიაკონი',
             age:'',
@@ -445,21 +839,18 @@
             id:31,
             data_id:31,
             mainUserId:7,
-            img_src:'./img/10.jpg',
-            portrait_img_src:'./img/portrait10(2).jpg',
-            userName:'დარეჯან მღებრიშვილი',
+            portrait_img_src:'https://gdb.rferl.org/942EEBB3-6C14-4371-95A4-D3333B392C25.jpg',
+            userName:'დარეჯან მღებრიშვილები',
             profession:'გეოლოგი ',
             age:'65 წლის',
             text:'',
             info_url:''
-
-            
         },
         {
             id:32,
             data_id:32,
             mainUserId:'',
-            portrait_img_src:'./img/avatar.jpg',
+            portrait_img_src:'https://gdb.rferl.org/A1198706-DF52-405B-AAEF-5F561F95354E.jpg',
             userName:'ზურაბ არდაზაშვილი',
             profession:'ექიმი',
             age:'71 წლის',
@@ -470,7 +861,7 @@
             id:33,
             data_id:33,
             mainUserId:'',
-            portrait_img_src:'./img/მარინე გოდუაძე.jpg',
+            portrait_img_src:'https://gdb.rferl.org/9C86F284-BF23-40AD-9318-925B641A5311.jpg',
             userName:'მარინე გოდუაძე',
             profession:'ექთანი',
             age:'64 წლის',
@@ -481,8 +872,7 @@
             id:34,
             data_id:34,
             mainUserId:7,
-            img_src:'./img/10.jpg',
-            portrait_img_src:'./img/portrait10(1).jpg',
+            portrait_img_src:'https://gdb.rferl.org/DDA7003D-A8DB-459C-A927-31F8135A4C85.jpg',
             userName:'პაატა მღებრიშვილი',
             profession:'',
             age:'51 წლის',
@@ -493,7 +883,7 @@
             id:35,
             data_id:35,
             mainUserId:'',
-            portrait_img_src:'./img/სონია.jpg',
+            portrait_img_src:'https://gdb.rferl.org/FF6E8CD4-281D-4EE2-861D-A8B2F9D4B5AF.jpg',
             userName:'სონია ფუთულიანი',
             profession:'რეანიმატოლოგი',
             age:'66 წლის',
@@ -504,7 +894,7 @@
             id:36,
             data_id:36,
             mainUserId:'',
-            portrait_img_src:'./img/ზურა.jpg',
+            portrait_img_src:'https://gdb.rferl.org/91D2E1BF-DF2D-477A-A625-676591E66A00.jpg',
             userName:'ზურაბ ჯავახაძე',
             profession:'სპორტის მკვლევარი',
             age:'84 წლის',
@@ -515,8 +905,7 @@
             id:37,
             data_id:37,
             mainUserId:6,
-            img_src:'./img/7.jpg',
-            portrait_img_src:'./img/portrait7(1).jpg',
+            portrait_img_src:'https://gdb.rferl.org/D36F8B5D-B54E-494B-B98D-DF1D834B0FB2.jpg',
             userName:' ლევან კაკაურიძე',
             profession:'',
             age:'54 წლის ',
@@ -527,8 +916,7 @@
             id:38,
             data_id:38,
             mainUserId:'',
-            img_src:'./img/7.jpg',
-            portrait_img_src:'./img/130548327_723163118315272_8688555862609466068_n.jpg',
+            portrait_img_src:'https://gdb.rferl.org/CF385D85-9F1A-459E-891F-4C17EB373C16.jpg',
             userName:'თემურ ქევხიშვილი',
             profession:'ლოტბარი',
             age:'80 წლის',
@@ -539,13 +927,56 @@
             id:39,
             data_id:38,
             mainUserId:'',
-            img_src:'./img/7.jpg',
-            portrait_img_src:'./img/130767515_719383099013299_7035142435302675735_n.jpg',
+            portrait_img_src:'https://gdb.rferl.org/C902AF89-AF13-4EF3-992F-51781571D526.jpg?fbclid=IwAR2FTvixnGYouAg6oqL0dfxTThw0x5ghpbto1q5v90vGL3gqcfPgcbOP0zI',
             userName:'გივი პარასკევაშვილი',
             profession:'ექიმი',
             age:'',
             text:'',
             info_url:'https://www.radiotavisupleba.ge/a/30992317.html?fbclid=IwAR11E970Vrr0diShFTAKWEXjVlpLlx3Kd9bTzwC9Wjac9dCdc6fiwoQoknU'
+        },
+        {
+            id:40,
+            data_id:39,
+            mainUserId:'11',
+            portrait_img_src:'https://gdb.rferl.org/6270A6BC-C255-449F-A707-D03D5BB64EFC.jpg?fbclid=IwAR1XC1uxDj0mM609AO1rakgw0zqCHsdkk7grrBUh0dfmEAZMeYMXAkdHufk',
+            userName:'მამუკა ნემსიწვერიძე',
+            profession:'',
+            age:'60 წლის',
+            text:'',
+            info_url:''
+        },
+        {
+            id:41,
+            data_id:40,
+            mainUserId:'12',
+            portrait_img_src:'https://gdb.rferl.org/DF4462BF-5C0F-4068-BE8B-9072F0D0375E.jpg',
+            userName:'ივანე ამბარდანიშვილი',
+            profession:'',
+            age:'73 წლის',
+            text:'',
+            info_url:''
+        },
+        {
+            id:42,
+            data_id:41,
+            mainUserId:'',
+            portrait_img_src:'https://gdb.rferl.org/90A14127-4325-42D1-99B8-84E90D921158.jpg',
+            userName:'გენადი ესაკია',
+            profession:'ბავშთა უროლოგი',
+            age:'77 წლის',
+            text:'',
+            info_url:''
+        },
+        {
+            id:43,
+            data_id:42,
+            mainUserId:'13',
+            portrait_img_src:'https://gdb.rferl.org/87BB186A-F72A-4A87-AE32-F7DB62E7EA51.jpg',
+            userName:'აკაკი ყურაშვილი',
+            profession:'',
+            age:'84 წლის',
+            text:'',
+            info_url:''
         }
     ]
     let personsHistoryArray=[
@@ -554,7 +985,7 @@
             data_id:0,
             mainUserId:1,
             age:'45 წლის',
-            img_src:'./img/1.jpg',
+            img_src:'https://gdb.rferl.org/B76A3C4F-93B0-4FA5-B129-48EE524A444A.jpg',
             title:'ნათია მსხვილიძე',
             text:'ოქტომბრის ბოლოს ბაღდათის სასწრაფო სამედიცინო დახმარების ექიმის სიკვდილის ამბავი მთელ რაიონს მოედო. იმედი მოგვიკვდაო, ასე გლოვობდნენ ბაღდათელები, იმიტომ რომ როცა არ უნდა დასჭირვებოდათ, სადაც არ უნდა დასჭირვებოდათ, როგორ ამინდშიც არ უნდა დასჭირვებოდათ, ნათია მათთან ჩნდებოდა. </br> </br> ტატიანა ხუსკივაძე, ნათიას კოლეგა, ამბობს, ვეხუმრებოდი ხოლმე, ნუ მიაჩვიე მეზობლები ასეთ ყურადღებასო, „მაგრამ სხვანაირად არ შეეძლო. საკუთარი თავი არ ადარდებდა, მთავარი იყო, სხვას არ გასჭირვებოდა რამე“. </br></br> ტატიანამ და ნათიამ 14 წელი ერთ ცვლაში იმუშავეს. ნათია მეხუთე ბრიგადის ექიმი იყო, ტატიანა - მეექვსესი. ერთად მუშაობდნენ ნათია და ტატიანა საავადმყოფოშიც. ფრთა მომტყდაო, ამბობს ტატიანა. </br></br>„კლინიკაში რომ პაციენტი ეგულებოდა, სახლში წასული, უკან, კლინიკაში ბრუნდებოდა. საკუთარი თვალით თუ არ ნახავდა როგორ იყო, ვერ მშვიდდებოდა. არადა, სულ არ იყო ვალდებული, რადგან კლინიკაში სხვა ექიმი მორიგეობდა. ასე იყო სასწრაფოზე მორიგეობის დროსაც: სხვა რომ 10-15 წუთში მოილევდა გამოძახებას და ავადმყოფთან ურთიერთობას, ის შესაძლოა მთელი საათი გაჩერებულიყო და სანამ ბოლომდე არ დარწმუნდებოდა, რომ ყველაფერი რიგზე იყო, არაფრით წამოვიდოდა. ნებისმიერ დროს, ვისაც კი რამე გაუჭირდებოდა, დღე იყო თუ ღამე, ნათიას ეძახდნენ. აქაც, კლინიკაში, როცა ნათია იყო მორიგე, ყველა იმედიანად იყო, ე.ი. ყურადღება არავის მოაკლდებოდა“. </br></br> ტატიანამ ნათია ბოლოს სიკვდილამდე 6 დღით ადრე, მაშინ ნახა, როცა ქუთაისიდან თბილისში გადმოჰყავდათ: <br><br>„შორიდან ვუყურებდი. ლაპარაკის თავი აღარ ჰქონდა. ქმარი მიეშველა, მანქანაში რომ ჩაესვა, მაგრამ ხელი გააშვებინა, არ მომეკაროო“. </br></br> ნათიას 12 და 8 წლის შვილები დარჩა.'
         },
@@ -563,7 +994,7 @@
             data_id:1,
             mainUserId:0,
             age:'89 წლის',
-            img_src:'./img/2.jpg',
+            img_src:'https://gdb.rferl.org/E4375905-A181-4399-8104-B38684F2C227.jpg',
             title:'უშანგ ჩიკვაიძე',
             text:'სიცოცხლის ბოლომდე ერთი ოცნება და ნატვრა ჰქონდა - უნდოდა მოკრივე ყოფილიყო, ნამდვილი მოკრივე, პროფესიონალი. ჰქონდა წითელი ხელთათმანები და ყოველდღე ისეთი შემართებით ვარჯიშობდა, თითქოს, მეორე საღამოს რინგზე უნდა გასულიყო. იმაზე წუხდა, რომ ახალგაზრდობაში, როცა მართლა შეეძლო პროფესიონალი მოკრივე გამხდარიყო, ომის წლებმა და გაჭირვებამ ხელი შეუშალა: ისე ვერ ვიკვებებოდი, როგორც ნამდვილ სპორტსმენს სჭირდებოდაო. </br></br> უშანგს არასდროს ჰყოლია ცოლ-შვილი, არც და-ძმა. სახლი, რომელიც თბილისში, ბესიკის ქუჩაზე იდგა, 2000-იანი წლების დასაწყისში დაკარგა. თითქმის 20 წლის წინ თავშესაფარი ხანდაზმულთა პანსიონატში იპოვა. პანსიონატში იპოვა უშანგმა მეგობარიც, ჟურნალისტი ცირა გვასალია. </br></br> 8 წლის წინ ცირამ ხანდაზმულებზე სტატიის მომზადება გადაწყვიტა. პანსიონატს სწორედ სტატიის გმირების საპოვნელად მიაკითხა. სტატიას მალევე დოკუმენტური ფილმიც მოჰყვა და უშანგი, თავისი მოკრივის ხელთათმანებით, და პანსიონატის სხვა ბინადრები ცირამ სხვებსაც გააცნო: </br></br> „დავმეგობრდით. ამ წლების განმავლობაში ურთიერთობა არ გაგვიწყვეტია. წელიწადში რამდენჯერმე ავდიოდი მათთან. მიმქონდა ტკბილეული, ჩაი, ვისხედით ხოლმე ერთად, ათას რამეზე ვლაპარაკობდით. მე იმათ დაბადების დღეებს არ ვტოვებდი და ისინი ჩემსას. უხაროდა ხოლმე უშანგის ჩემი დანახვა. საყვარელი თუთიყუშები ჰყავდა, სანჩო და პანჩო, ცოლ-ქმარი. ხუმრობდა ხოლმე, მოვიდა დრო, მეც დავქორწინდეო“. </br></br> ცირამ და უშანგმა ბოლოს 13 ოქტომბერს, უშანგის დაბადების დღეზე, ტელეფონით ილაპარაკეს. ბედნიერი და კმაყოფილი ჩანდა, ნათესავები უნდა მოვიდნენ და შენც მოდიო, ასე უთხრა: </br></br> „ძალიან მინდოდა პირადად მიმელოცა დაბადების დღე, მაგრამ ეპიდემიის გამო პანსიონში მისვლას მოვერიდე. არა უშავს, ამოდიო, მითხრა, მაგრამ მაინც თავი შევიკავე. როგორც ვიცი, დაბადების დღემ კარგად ჩაიარა, თუმცა რამდენიმე დღის შემდეგ პანსიონატიდან შემატყობინეს, უშანგს კოვიდი დაუდასტურდა, კლინიკაში წევს და მძიმედ არისო“. </br></br> უშანგი 10 ნოემბერს გარდაიცვალა. ცირას მისი სიკვდილი მეორე დღეს შეატყობინეს. '
         },
@@ -572,7 +1003,7 @@
             data_id:2,
             mainUserId:2,
             age:'57 წლის',
-            img_src:'./img/3.jpg',
+            img_src:'https://gdb.rferl.org/37F7915E-06F3-41D9-82E6-250CDF9D0773.jpg',
             title:'მამუკა სვანიძე',
             text:'მამუკა სვანიძის ვეტერინარული კლინიკის შესახებ მთელმა ქუთაისმა იცის. წლებია, თუკი ან ძაღლი გაუხდებოდა ვინმეს ავად, ან კატა, ყველას ექიმი მამუკა იყო. მამუკა აჭმევდა და მკურნალობდა მიუსაფარ ცხოველებსაც. ქუთაისში 57 წლის ვეტექიმი  გამორჩეულად უყვარდათ. </br></br> გარდა იმისა, რომ პროფესიონალი იყო, ისეთი მშვიდი გამოხედვა ჰქონდა, მაშინვე დაგაწყნარებდა აფორიაქებულს და ანერვიულებულსო, ჰყვება ჟურნალისტი ქეთი ბერძენიშვილი, რომელმაც   ვეტექიმის ავადმყოფობის ამბავი ოქტომბრის შუა რიცხვებში შეიტყო. </br></br> „ჩემი ყველა შინაური ცხოველის ვეტექიმი მამუკა იყო. წლები ვმეგობრობდით. ასე იყო ჩემს გარშემო თითქმის ყველა - ნათესავი, მეგობარი თუ, უბრალოდ, ნაცნობი. მისნაირი გულისხმიერი და ყურადღებიანი ექიმი სხვა არ გვეგულებოდა. მომაკვდავი ცხოველები გადაურჩენია. ქუჩის ცხოველების პატრონიც მამუკა იყო - არც საჭმელს აკლებდა, არც მკურნალობას. ოქტომბრის შუა რიცხვებში ლეკვი მივიყვანე აცრაზე. მამუკას შვილი დამხვდა, მამა ავად არისო. სამწუხაროდ, მამუკამ ვერ დაამარცხა კოვიდი. ერთი ფრთიანი გამოთქმა რომ გვიყვარს - კაცი, რომელიც ქალაქს დააკლდაო, მამუკა ნამდვილად დააკლდა ქუთაისს“. </br></br>მამუკა სვანიძე 2 ნოემბერს, ქუთაისში გარდაიცვალა. '
         },
@@ -581,7 +1012,7 @@
             data_id:3,
             mainUserId:3,
             age:'34 წლის',
-            img_src:'./img/4.jpg',
+            img_src:'https://gdb.rferl.org/377F3D03-C5D5-47EA-8FDB-A3CD44EE1154.jpg',
             title:'თათია ხურციძე',
             text:'თათია ხურციძე 27 ოქტომბერს გარდაიცვალა. დარჩა 9 და 6 წლის შვილები. მიუხედავად დაავადებისა, რომელსაც ის წლების განმავლობაში ებრძოდა, ცხოვრობდა აქტიური ცხოვრებით, მუშაობდა არასამთავრობო ორგანიზაცია „აფხაზინტერკონტში“, მართავდა საოჯახო ბიზნესს - პატარა სასტუმროს ქუთაისში. </br></br> კოვიდით ინფიცირებამდე რამდენიმე დღით ადრე გაეროს ქალთა ორგანიზაციის ვებგვერდზე თათიას ამბავი გამოქვეყნდა. თათია ჰყვებოდა, როგორ დაეხმარა ორგანიზაციის მხარდაჭერით მიღებული ცოდნა და უნარები სურვილის ასრულებაში, როგორ ააწყო მისმა ოჯახმა მცირე ბიზნესი და როგორ აპირებდა საქმიანობის გაფართოებას: </br></br>„ჩემს ცხოვრებას ახლა სულ სხვა მუხტი აქვს. ვხვდები, რომ ამ გადაწყვეტილებით დიდი ნაბიჯი გადავდგი: ვმართავ ბიზნესს, რომელიც მომგებიანია. ეკონომიკური დამოუკიდებლობა და ბიზნესის წარმოება ძალიან გცვლის: გადაწყვეტილებებს თავად იღებ, შინაგანად კიდევ უფრო იხსნები და ხვდები, რომ სრულიად განსხვავებული შესაძლებლობები გიჩნდება. საკუთარ თავს რომ ვუყურებ, ძალიან ამაყი ვარ, თუმცა ვიცი, კიდევ უფრო მეტის გაკეთება შემიძლია. სასტუმროს გახსნის შემდეგ მე და ჩემმა დამ დედაც აქ დავასაქმეთ. როდესაც ბევრი სტუმარი მყავს, ორი ქალი კიდევ მეხმარება, თუმცა ქალების გაძლიერება მხოლოდ ამით არ მინდა შემოიფარგლოს. ვაპირებ სოფლის მეურნეობის პროდუქტები, რომლებიც სასტუმროში მჭირდება, ქალი მომწოდებლებისგან შევიძინო, მათ შორის იმ მეწარმეებისგან, რომლებიც პროექტით გავიცანი. ეს ჩემი კიდევ ერთი მნიშვნელოვანი გეგმაა, რომელსაც აუცილებლად განვახორციელებ“. </br></br>  თათიას კოვიდი 16 ოქტომბერს დაუდასტურდა. 11-დღიანი ბრძოლის შემდეგ, თბილისში, ერთ-ერთ კლინიკაში გარდაიცვალა: </br></br>„მიუხედავად იმისა, რომ ბევრს მუშაობდა, საღამოობით, როცა სახლში ბრუნდებოდა, მთელ დროს ბავშვებს უთმობდა. შაბათ-კვირასაც აუცილებლად შვილებთან ატარებდა. არ უნდოდა ბავშვებს დედის დანაკლისი ეგრძნოთ. ახლა ყველაზე მეტად ბავშვები განიცდიან. ენატრებათ, ათვალიერებენ მის სურათებს, კოცნიან. ვიდეოებს უყურებენ, ხმოვან შეტყობინებებს უსმენენ. ჯერ ძალიან პატარები არიან. მათი შემხედვარე, ჩვენ ხმას როგორღა ამოვიღებთ“, - ამბობს თათიას მული, ლელა ძოწენიძე. '
         },
@@ -590,7 +1021,7 @@
             data_id:4,
             mainUserId:4,
             age:'73 წლის',
-            img_src:'./img/5.jpg',
+            img_src:'https://gdb.rferl.org/7FFF285E-01E1-48DF-B51E-71C4E8803BF2.jpg',
             title:'მანანა ბარამიძე',
             text:'შვილებისთვის არ გაუმხელია, მაგრამ გრძნობდა, ვირუსი თუ შეხვდებოდა, ვერ გადაიტანდა. ჯერ კიდევ თვეების წინ გაანდო შიში ახლობელს. შვილებმა ამის შესახებ მხოლოდ დედის გარდაცვალების შემდეგ შეიტყვეს. </br></br> 73 წლის მანანა ბარამიძე ბათუმიდან იყო, ჯანმრთელობის პრობლემები ჰქონდა, ეტლით მოძრაობდა  და ბოლო ხუთი წელი ქმარი, 79 წლის თამაზ იმედაიშვილი, უვლიდა. ცოლ-ქმარი ერთად დაინფიცირდა. ერთად დააწვინეს ისინი კლინიკაშიც. თამაზი გამოჯანმრთელდა, მანანა ვირუსს ვერ მოერია: </br></br> „ინფიცირებიდან მეექვსე დღეს დედას მდგომარეობა დამძიმდა. მამას სთხოვდა თურმე, მის გვერდით ყოფილიყო, თმაზე მომეფერე, ხელი დამიჭირეო. ნელ-ნელა სულ უფრო დამძიმდა და მეათე დღეს უკვე რეანიმაციაში გადაიყვანეს. დედას გარდაცვალება ყველაზე რთული მაინც, ალბათ, მამაჩემისთვისაა. წლების განმავლობაში ის უვლიდა დედას. მამა დღემდე დარწმუნებულია, რომ საავადმყოფოში რომ არ დაეცილებინათ ერთმანეთისთვის, დედა რომ რეანიმაციაში არ წაეყვანათ და მასთან ერთად დარჩენილიყო, გადარჩებოდა. მამაჩემი დღემდე დარწმუნებულია, რომ დედა გონზე იყო და იგრძნო, როცა მას დააშორეს“, - გვიყვება მანანას შვილი, ნატა იმედაიშვილი, რომლისთვისაც მშობლების დაინფიცირების ამბავი დღემდე გამოცანად რჩება: </br></br> „მათთან მხოლოდ მე მივდიოდი, პროდუქტით ვამარაგებდი. მამა ძალიან იშვიათად გადიოდა მაღაზიაში პურის ამოსატანად. ვვარაუდობ, რომ შესაძლოა მამა ფულით დაინფიცირდა და შემდეგ უკვე დედასაც გადაედო. საქართველოში ვირუსის გამოჩენის დღიდანვე დედას შიში დაეწყო. ძალიან ბევრ ინფორმაციას იღებდა ამ დაავადების შესახებ, ძალიან ბევრს კითხულობდა, ინფორმირებული იყო და განსაკუთრებულად ფრთხილობდა. დედა გრძნობდა, რომ ამ დაავადებას ვერ გადაიტანდა. ძალიან განვიცდი, რომ სიკვდილის წინ ვერ ვნახე. მასთან შესვლის უფლება არავის ჰქონდა“. </br></br> ყველაზე მეტად ახლა ნატას დედის სატელეფონო ზარები ენატრება: </br></br> „სახლიდან გამოსული არ ვიყავი ხოლმე, რამდენიმე წუთში რომ მირეკავდა, აბა, მიხვედი? როგორ მიხვედი? ხანდახან ტელეფონსაც ვუთიშავდი, მერე ვუბრაზდებოდი, ორი წუთის წინ არ გამოვედი? ჯერ როგორ მივიდოდი-მეთქი. ახლა ვნანობ, ძალიან ვნანობ. ეს ყურადღება ყველაზე მეტად დამაკლდება. მისი ყოველდღიური ზარები - რას ვჭამთ, როგორ ვართ, ბავშვებმა ხომ იმეცადინეს“...'
         },
@@ -599,7 +1030,7 @@
             data_id:5,
             mainUserId:5,
             age:'91 წლის',
-            img_src:'./img/6.jpg',
+            img_src:'https://gdb.rferl.org/14B99238-E665-48A8-861A-31550B5C84C4.jpg',
             title:'მარიამ (მერი) ხუციშვილი',
             text:'„კითხვა უყვარდა, თან ძალიან. 91 წლის ასაკშიც კი, დღე არ გავიდოდა, ახალი რამ არ წაეკითხა“, გვეუბნება მარიამ ხუციშვილის რძალი, გულიკო კასრაძე: </br></br> გარდაცვალებამდე ცოტა ხნით ადრე მარიამმა შვილიშვილს წიგნების გრძელი სია ჩამოუწერა, ეს წიგნები დედას უყიდე, წაიკითხოსო: </br></br> „წიგნებს ვუცვლიდით ხოლმე ერთმანეთს და მერე დიდხანს ვლაპარაკობდით ლიტერატურაზე. უნიჭიერესი ქალი იყო. ახალგაზრდა დაქვრივდა და ორი შვილი მარტომ გაზარდა. 30 წელი გავატარეთ ერთად. უამრავი რამ ვისწავლე მისგან. ერთი შეხედვით, მკაცრი მოგეჩვენებოდა, მაგრამ ძალიან თბილი ადამიანი იყო. ბოლო წლებში ჯანმრთელობას უჩიოდა, სახსრები აწუხებდა, ავადმყოფობდა, მაგრამ ყველანი, დიდებიც და პატარებიც, ქალებიც და კაცებიც, ოჯახის უფროსად ვთვლიდით. ყველაფერს მერის ვეკითხებოდით, რადგან გვჯეროდა, რომ ყველაზე სწორი გადაწყვეტილების მიღება მაინც მერის შეეძლო“. </br></br> მერი ნოემბრის დასაწყისში გარდაიცვალა. ოჯახის წევრები, რომლებიც თავადაც ინფიცირებულები იყვნენ, მის დაკრძალვას ვერ დაესწრნენ.'
         },
@@ -607,8 +1038,8 @@
             id:6,
             data_id:6,
             mainUserId:6,
-            age:'54 წლის',
-            img_src:'./img/7.jpg',
+            age:'ორივე 54 წლის',
+            img_src:'https://gdb.rferl.org/3BC3B61C-CA24-4589-97B4-2BF36F30F7A3.jpg',
             title:'ირინა მიქაძე,ლევან კაკაურიძე',
             text:'„ერთი მშობელი მაინც გადამირჩინეთ! თქვენი ჯანდაცვის სისტემის კოლაფსის და არასწორი ტესტის პასუხის გამო ვართ ასეთ დღეში“, - ასე მიმართა მარი კაკაურიძემ 5 ნოემბერს სოციალური ქსელის საშუალებით საქართველოს ჯანდაცვის სამინისტროსა და საქართველოს მთავრობას. </br></br> ამ სტატუსის გამოქვეყნებიდან მალევე ჯერ მარის დედა, რამდენიმე საათში კი მამაც გარდაიცვალა. ცოლ-ქმარი ქუთაისში ცხოვრობდა. მარის მშობლები სხვადასხვა კლინიკის რეანიმაციულ განყოფილებებში გარდაიცვალნენ. მარი დარწმუნებულია, რომ მშობლების გარდაცვალების მიზეზი ჯანდაცვის სისტემის დაგვიანებული რეაქცია იყო. </br></br> ირინა სოფელ კონტუათის საჯარო სკოლის დაწყებითი კლასის პედაგოგი იყო. 34 წლის წინ, 20 წლის ასაკში დაიწყო პედაგოგად მუშაობა. უკანასკნელი 25 წელი კი სწორედ კონტუათის სკოლაში გაატარა. </br></br>„დედა და მამა კლასელები იყვნენ. სკოლის მერხიდან უყვარდათ ერთმანეთი და ერთად გამომეცალნენ ხელიდან. ჯანმრთელები მყავდნენ, არაფერი აწუხებდათ. დედა ყოველ დილით ექვს საათზე დგებოდა, რომ მოწესრიგებულიყო და კონტუათში წასულიყო, სკოლაში არ დაგვიანებოდა. ყველას უყვარდა, დიდსაც და პატარასაც, მოსწავლესაც და მასწავლებელსაც. მამასაც თავისი საქმე ჰქონდა. ძალიან აქტიური კაცი იყო. ძნელია იმის გაცნობიერება, რაც ჩვენ დაგვემართა. ძალიან მიჭირს მათზე საუბარი“... </br></br> ირინა და ლევანი ისე დაკრძალეს, მარიმ მათთან გამომშვიდობება ვერ შეძლო. ის თვითონაც ინფიცირებული იყო. '
         },
@@ -617,16 +1048,16 @@
             data_id:7,
             mainUserId:7, 
             age:'65-ის, 51-ის და 94 წლის',
-            img_src:'./img/10.jpg',
+            img_src:'https://gdb.rferl.org/02C7F790-9406-49A2-A2A1-B5EDF8850C5D.jpg',
             title:'დარეჯან და პაატა მღებრიშვილები, მარგო ქუირციკიშვილი',
-            text:'მარგოს, დარეჯანსა და პაატას ერთმანეთის გარდაცვალება არ გაუგიათ. რამდენიმედღიანი ინტერვალით, ჯერ 94 წლის მარგო გარდაიცვალა, შემდეგ - მისი ქალიშვილი, 65 წლის დარეჯანი, ბოლოს კი - ვაჟი, 51 წლის პაატა.  </br></br> ოჯახის წევრებისა და ახლობლებისთვის ყველაზე მოულოდნელი მაინც დარეჯანის სიკვდილი აღმოჩნდა. 65 წლის ქალი, რომელსაც არანაირი დაავადება არ აწუხებდა, მუშაობდა, ხანდაზმულ დედას და ძმას უვლიდა, რომელსაც დაუნის სინდრომი ჰქონდა, ინფიცირებიდან რამდენიმე დღეში კლინიკაში გარდაიცვალა. </br> დარეჯანი პროფესიით გეოლოგი იყო. 2012 წელს საინჟინრო-გეოლოგიური კვლევების ფირმა დააფუძნა. სიცოცხლის ბოლომდე მუშაობდა საველე სამუშაოებზე. ხშირად შაბათ-კვირასაც საქმეში ატარებდა, თავისუფალ დროს კი დედას და ძმას უთმობდა. ორივე განსაკუთრებულ მოვლა-პატრონობას საჭიროებდა. დარეჯანი ხშირად ამბობდა, მე ვარ ამათი ექიმი. მიუხედავად იმისა, რომ გეოლოგი ვარ პროფესიით, იმდენი რამ ვისწავლე ამ წლების განმავლობაში, ექიმზე უკეთ შემიძლია ვუპატრონოო. </br></br> პაატა არასდროს გამოუკეტავთ ოჯახის წევრებს სახლში. დაამთავრა 8 კლასი, თეატრისა და ოპერის ხშირი სტუმარი იყო, თუმცა ბოლო ხანებში მისი ჯანმრთელობის მდგომარეობა შედარებით დამძიმდა და სპექტაკლებზე სიარულსაც ვეღარ ახერხებდა. განსაკუთრებით უყვარდა „ქეთო და კოტე“, თვითონაც ღიღინებდა ხოლმე. </br></br> მიუხედავად დიდი ასაკისა, 94 წლის მარგო, როგორც იტყვიან ხოლმე, ყოჩაღად გამოიყურებოდა. სანამ დარეჯანი სამსახურში იყო, პაატას უვლიდა, საჭმელსაც უკეთებდა და აჭმევდა კიდეც. </br></br> მარგო და მისი შვილები ვირუსით ოქტომბრის შუა რიცხვებში დაინფიცირდნენ. ინფიცირებიდან რამდენიმე დღეში სამივე კლინიკაში გადაიყვანეს. მარიკა მორჩილაძე, გარდაცვლილების ოჯახის ახლობელი, ამბობს, რომ ექიმებმა მათ გადასარჩენად ყველაფერი გააკეთეს: </br> </br> „მაქსიმალურად ცდილობდნენ, მუდმივად კონტაქტზე ვიყავით ექიმებთან, მაგრამ ვერაფერი უშველეს. 27 ოქტომბერს მარგო გარდაიცვალა. დარეჯანი უკვე ინტუბაციაზე იმყოფებოდა და დედის სიკვდილის ამბავი არ გაუგია. სამ დღეში, 30 ოქტომბერს, პაატას დაბადების დღეს, დარეჯანიც გარდაიცვალა. მარგო მაინც ასაკში იყო და ვხვდებოდით, რომ საკმაოდ გაჭირდებოდა მისი გადარჩენა, მაგრამ დარეჯანის სიკვდილი მეხის გავარდნას ჰგავდა. ვერც წარმოიდგენთ, როგორი ენერგიის პატრონი იყო, როგორი აქტიური. ყველაზე დიდხანს, თითქმის ორი კვირა, პატიკომ იცოცხლა. ბევრი იბრძოლა, მაგრამ დამარცხდა. პატიკო 15 ნოემბერს გარდაიცვალა. არცერთ არ გაუგია ერთმანეთის სიკვდილი“. </br></br> დარეჯანი პატარა სახლზე ოცნებობდა, რომელსაც სადმე, სოფელში ააშენებდა, ექნებოდა კოხტა ეზო, სადაც დედას, დეიდასა და პაატას წაიყვანდა და სუფთა ჰაერზე, სიმწვანეში, ყველანი ერთად დაისვენებდნენ.'
+            text:'მარგოს, დარეჯანსა და პაატას ერთმანეთის გარდაცვალება არ გაუგიათ. რამდენიმედღიანი ინტერვალით, ჯერ 94 წლის მარგო გარდაიცვალა, შემდეგ - მისი ქალიშვილი, 65 წლის დარეჯანი, ბოლოს კი - ვაჟი, 51 წლის პაატა.  </br></br> ოჯახის წევრებისა და ახლობლებისთვის ყველაზე მოულოდნელი მაინც დარეჯანის სიკვდილი აღმოჩნდა. 65 წლის ქალი, რომელსაც არანაირი დაავადება არ აწუხებდა, მუშაობდა, ხანდაზმულ დედას და ძმას უვლიდა, რომელსაც დაუნის სინდრომი ჰქონდა, ინფიცირებიდან რამდენიმე დღეში კლინიკაში გარდაიცვალა. </br> დარეჯანი პროფესიით გეოლოგი იყო. 2012 წელს საინჟინრო-გეოლოგიური კვლევების ფირმა დააფუძნა. სიცოცხლის ბოლომდე მუშაობდა საველე სამუშაოებზე. ხშირად შაბათ-კვირასაც საქმეში ატარებდა, თავისუფალ დროს კი დედას და ძმას უთმობდა. ორივე განსაკუთრებულ მოვლა-პატრონობას საჭიროებდა. დარეჯანი ხშირად ამბობდა, მე ვარ ამათი ექიმი. მიუხედავად იმისა, რომ გეოლოგი ვარ პროფესიით, იმდენი რამ ვისწავლე ამ ��ლების განმავლობაში, ექიმზე უკეთ შემიძლია ვუპატრონოო. </br></br> პაატა არასდროს გამოუკეტავთ ოჯახის წევრებს სახლში. დაამთავრა 8 კლასი, თეატრისა და ოპერის ხშირი სტუმარი იყო, თუმცა ბოლო ხანებში მისი ჯანმრთელობის მდგომარეობა შედარებით დამძიმდა და სპექტაკლებზე სიარულსაც ვეღარ ახერხებდა. განსაკუთრებით უყვარდა „ქეთო და კოტე“, თვითონაც ღიღინებდა ხოლმე. </br></br> მიუხედავად დიდი ასაკისა, 94 წლის მარგო, როგორც იტყვიან ხოლმე, ყოჩაღად გამოიყურებოდა. სანამ დარეჯანი სამსახურში იყო, პაატას უვლიდა, საჭმელსაც უკეთებდა და აჭმევდა კიდეც. </br></br> მარგო და მისი შვილები ვირუსით ოქტომბრის შუა რიცხვებში დაინფიცირდნენ. ინფიცირებიდან რამდენიმე დღეში სამივე კლინიკაში გადაიყვანეს. მარიკა მორჩილაძე, გარდაცვლილების ოჯახის ახლობელი, ამბობს, რომ ექიმებმა მათ გადასარჩენად ყველაფერი გააკეთეს: </br> </br> „მაქსიმალურად ცდილობდნენ, მუდმივად კონტაქტზე ვიყავით ექიმებთან, მაგრამ ვერაფერი უშველეს. 27 ოქტომბერს მარგო გარდაიცვალა. დარეჯანი უკვე ინტუბაციაზე იმყოფებოდა და დედის სიკვდილის ამბავი არ გაუგია. სამ დღეში, 30 ოქტომბერს, პაატას დაბადების დღეს, დარეჯანიც გარდაიცვალა. მარგო მაინც ასაკში იყო და ვხვდებოდით, რომ საკმაოდ გაჭირდებოდა მისი გადარჩენა, მაგრამ დარეჯანის სიკვდილი მეხის გავარდნას ჰგავდა. ვერც წარმოიდგენთ, როგორი ენერგიის პატრონი იყო, როგორი აქტიური. ყველაზე დიდხანს, თითქმის ორი კვირა, პატიკომ იცოცხლა. ბევრი იბრძოლა, მაგრამ დამარცხდა. პატიკო 15 ნოემბერს გარდაიცვალა. არცერთ არ გაუგია ერთმანეთის სიკვდილი“. </br></br> დარეჯანი პატარა სახლზე ოცნებობდა, რომელსაც სადმე, სოფელში ააშენებდა, ექნებოდა კოხტა ეზო, სადაც დედას, დეიდასა და პაატას წაიყვანდა და სუფთა ჰაერზე, სიმწვანეში, ყველანი ერთად დაისვენებდნენ.'
         },
         {
             id:8,
             data_id:8,
             mainUserId:8,
             age:'68 წლის',
-            img_src:'./img/9.jpg',
+            img_src:'https://gdb.rferl.org/657124AE-B7F8-4BDD-A333-6791ACED766D.jpg',
             title:'ონისე გათენაშვილი',
             text:'მთელ ახალგორში ონისეზე მაღალი კაცი არ დადიოდაო, - ასე იხსენებს ახალგორის საავადმყოფოს ქირურგსა და სასწრაფო სამედიცინო დახმარების ექიმს, ონისე გათენაშვილს, ახალგორელი აქტივისტი თამარ მეარაყიშვილი. </br></br>ონისე 17 ნოემბერს წეროვანის დევნილთა დასახლებასთან ახლოს, ქანდას სასაფლაოზე, დაკრძალეს. </br></br>  გარდაცვალებამდე რამდენიმე დღით ადრე კოვიდით ინფიცირებული ექიმი, დე ფაქტო ხელისუფლების გადაწყვეტილებით, სამკურნალოდ ცხინვალში გადაიყვანეს, თუმცა მდგომარეობის დამძიმების შემდეგ ცხინვალელმა ექიმებმა მისი თბილისში გადაყვანის გადაწყვეტილება მიიღეს. 68 წლის ექიმი გზად თბილისისკენ გარდაიცვალა: </br></br> „ყველა იცნობდა ონისეს, მოფერებით ოქროს ეძახდნენ. ისეთი მაღალი იყო, მისი სიმაღლის კაცი ახალგორში არ დადიოდა. ორ მეტრზე მაღალი იქნებოდა. ძალიან პატივსაცემი, კოლორიტული ოჯახიდან იყო. მამა ფოტოგრაფი ჰყავდა, ერთადერთი ფოტოგრაფი მთელ ახალგორში, დედა - პედაგოგი. ახალგორში ცოლთან ერთად ცხოვრობდა. ერთი წლის წინ, გზა რომ ჩაიკეტა, მისი შვილები საქართველოს კონტროლირებად ტერიტორიაზე აღმოჩნდნენ და ოჯახიც გაიყო. ყველას ძალიან დაგვწყვიტა გული ონისემ. თითქმის ყოველდღე ვხედავდით, გვესმოდა მისი როხროხა ხმა, შეძახილები. დროულად რომ მოხერხებულიყო ონისეს თბილისში გადაყვანა, იქნებ გადარჩენილიყო კიდეც“, - ამბობს თამარი. </br></br> ონისე ბოლო წუთამდე თავის პროფესიულ საქმიანობას ასრულებდა. მაკა, მისი ქალიშვილი, რომელიც თავადაც ექიმია, ფიქრობს, რომ მამამისი სწორედ სამსახურებრივი მოვალეობის შესრულების დროს დაინფიცირდა: </br></br> „მამასნაირი კეთილი და პატიოსანი ადამიანი სხვა არ მეგულება. ეს პროფესიაც მამამ შემაყვარა და მეც მამას გამო გადავწყვიტე ექიმი გავმხდარიყავი. ზედ ჰყვებოდა პაციენტებს. ბავშვობისას, მახსოვს, ხშირად ღამით სახლშიც კი არ მოდიოდა. მეორე დილით დაბრუნდებოდა ხოლმე დაღლილი და იტყოდა, მძიმე ავადმყოფი გვყავდა, ვერ დავტოვებდიო. უყვარდა თავისი საქმე და, რაც მთავარია, ადამიანები უყვარდა“. </br></br>  მაკამ ცოცხალი მამა ბოლოს 9 თვის წინ, თებერვალში ნახა. დე ფაქტო ხელისუფლების მიერ ერთი წლის წინ ჩაკეტილი გზა სულ რამდენიმე დღით გაიხსნა და ონისე საქართველოს კონტროლირებად ტერიტორიაზე შვილების სანახავად ჩამოვიდა.'
         },
@@ -636,7 +1067,7 @@
             data_id:9,
             mainUserId:9,
             age:'60 წლის',
-            img_src:'./img/8.jpg',
+            img_src:'https://gdb.rferl.org/7C4C8D21-93C2-4B28-8EAB-17AEDF2976DB.jpg',
             title:'ლუდმილა ანუა',
             text:'„სოხუმის პირველი საშუალო სკოლის პედაგოგი ლუდმილა ანუა 20 სექტემბერს ქუთაისში, კლინიკა „ბომონდში“ გარდაიცვალა. სოხუმიდან ქუთაისში ის 19 სექტემბერს მძიმე მდგომარეობაში გადმოიყვანეს. <br><br> გარდაცვალებამდე ექვსი დღით ადრე ლუდმილა ანუამ სოციალურ ქსელში პოსტი გამოაქვეყნა. ის უკვე გუდაუთის კლინიკაში მკურნალობდა: <br><br> „აფხაზებო, გაუფრთხილდით თავს! ინფექცია ჩვენ შორისაა. მეც არ მჯეროდა ამ დაავადების, მაგრამ გუდაუთაში აღმოვჩნდი“.'
         },
@@ -645,12 +1076,43 @@
             data_id:10,
             mainUserId:10,
             age:'100 წლის',
-            img_src:'./img/ანიკო სურმანიძე.jpg',
+            img_src:'https://gdb.rferl.org/9AF8DA3B-AF81-4FA8-A1F9-18F74C686DD4.jpg',
             title:'ანიკო სურმანიძე',
             text:'100 წლის ანიკო სურმანიძე სოფელ გონიოდან, 6 დეკემბერს დაკრძალეს. ანიკოს 4 შვილი, 15 შვილიშვილი, 32 შვილთაშვილი და 10 შვილთაშვილის შვილი ჰყავდა. მიუხედავად შთამომავლების სიმრავლისა, სიცოცხლის უკანასკნელი დღეები მან სრულიად მარტომ, უცხო გარემოში გაატარა და ისე გარდაიცვალა, რომ მასთან გამომშვიდობება ვერავინ შეძლო. <br><br>იშვიათად ავადმყოფობდა, კარგი მეხსიერება და განსაკუთრებული იუმორის გრძნობა ჰქონდაო, ასე ახასიათებს ბებიას ირინე სურმანიძე და მასთან ბოლო შეხვედრას იხსენებს: <br><br> “სექტემბერში ვნახე, დივანზე წამოწოლილები ძველ ამბებს ვიხსენებდით, თმებში მეფერებოდა... უცებ მეუბნება, ეჰ, ბებო, ნეტავ კიდევ თუ გნახავო? პატარა რომ ვიყავი, მაშინაც ასე მეფერებოდა და ხშირად მეუბნებოდა - დიდი გოგო გაიზრდები ბებო, ლამაზი და ჭკვიანი, შენს ქორწილში მე უკვე დედაბერი ვიქნებიო. იცოდე, სიკვდილის წინ წყალი უნდა დამალევინოთ, ტუჩები ხშირ-ხშირად უნდა დამისველოთ წყლით სანამ ჩემი სული ზეცაში გაფრინდებაო. კი-მეთქი, ვპირდებოდი. ბებო ცივ და სასტიკ გარემოში გარდაიცვალა. კოვიდ 19-ით დაავადებულ სხვა მძიმე პაციეnტებთან ერთად გაატარა ბოლო 5 დღე. არავინ ყავდა გვერდით თავისი მრავალრიცხოვანი არმიიდან, ვერავინ შეძლო მისი ბოლო სურვილის შესრულება”.'
+        },
+        {
+            id:11,
+            data_id:11,
+            mainUserId:11,
+            age:'60 წლის',
+            img_src:'https://gdb.rferl.org/022638CC-0FED-45B5-BD83-B7195F416C1A.jpg',
+            title:'მამუკა ნემსიწვერიძე',
+            text:'სიკვდილამდე რამდენიმე დღით ადრე, შვილის ხელით, ცოლს ქრიზანტემების თაიგული გაუგზავნა. <br> <br> შორენა ჯანაძე, მამუკას ცოლი, ახლაც ფიქრობს, რომ ეს ყველაფერი მხოლოდ სიზმარია და მალე უნდა გამოფხიზლდეს. მამუკასა და შორენას ურთიერთობას, მეგობრები „სიყვარულის ამბავს“ ეძახდნენ: <br> „ჩვენ მხოლოდ მეუღლეები არ ვიყავით. ჩვენ ვიყავით მეგობრები და თანამოაზრეები. 27 წელი ვიცხოვრეთ ერთად და ჩემთვის ყველაზე მთავარი ამ 27 წლის განმავლობაში იყო უსიტყვო შეგრძნება იმისა, რომ ყოველთვის ჩემს გვერდით იყო, ყოველთის იცოდა, რა მიხაროდა, რა მაწუხებდა. უსაშველოდ დიდი სიყვარული და პასუხისმგებლობა ჰქონდა ჩვენს წინაშე. დღეს, როცა ის ცოცხალი აღარ არის, კიდევ უფრო კარგად ვხვდები, რომ არანაირი ფინანსები არ განსაზღვრავს ბედნიერებას. თუკი გინდა, რომ შენს გვერდით ადამიანი ბედნიერი იყოს, ამას ყოველთვის მოახერხებ, თუნდაც უფულოდ. 90-იან წლებში რთული პერიოდი გამოვიარეთ, გაზი არ იყო, შუქი არ იყო, წყალი არ იყო, სანთლის შუქზე ვიყავით, მაგრამ ჩემ ქმარს შეეძლო გვირილების თაიგული დაეკრიფა მინდორში და იმით გავეხარებინე. ისიც შეძლო, რომ მომაკვდავმა, როცა უკვე რეანიმაციაში იწვა, ჩემი საყვარელი ქრიზანთემების თაიგული გამოეგზავნა. მომაკვდავმაც მოახერხა ჩემთვის სიხარულის მონიჭება“. <br> <br> „ევექსის“ ინტერვენციული ცენტრის რეანიმაცია-ანესთეზიის სამსახურის უფროსი, 60 წლის რეანიმატოლოგ-ანესთეზიოლოგი, სიკვდილთან თვენახევრიანი ბრძოლის შემდეგ, 19 დეკემბერს გარდაიცვალა. <br><br> სავარაუდოდ, კლინიაში, სამსახურებრივი მოვალეობის შესრულების დროს დაინფიცირდა. მამუკა ნემსიწვერიძის მეუღლე, რომელიც თავადაც ექიმია, ამბობს, რომ მისი ქმარი პრაქტიკულად ჯანმრთელი ადამიანი იყო:  <br> „როგორც ჩანს, ძალიან დიდი კონცენტრაციის ვირუსი მოხვდა მის ორგანიზმში და ვეღარ გაუმკლავდა. მისი გადარჩენისთვის უამრავი ექიმი იბრძოდა, მაგრამ ვერ გამოსტაცეს სიკვდილს. სიკვდილის შემდეგ, მეგობარმა უთხრა „შენ იყავი ღმერთის ელჩი მედიცინაში, სიცოცხლის სადარაჯოზეო“, ისე მამხნევებს ეს სიტყვები, ისე მაძლიერებს“.'
+        },
+        {
+            id:12,
+            data_id:12,
+            mainUserId:12,
+            age:'73 წლის',
+            img_src:'https://gdb.rferl.org/DF4462BF-5C0F-4068-BE8B-9072F0D0375E.jpg',
+            title:'ივანე ამბარდანიშვილი',
+            text:'ახლა, მის შვილს, ერეკლეს, ყველაზე მეტად მამის სიცილი ენატრება. ბავშვივით სიცილი იცოდა, ტირილიც, როგორც პატარა ბავშვს, ისე შეეძლოო: <br> „თუკი რამეზე გული აუჩუყდებოდა, მაშინვე ტირილს იწყებდა. სიხარულიც ასეთი გულწრფელი იცოდა. ნებისმიერი პატარა დეტალსაც კი შეეძლო ისე გაეხარებინა, როგორც ბავშვი. ცუდს არასდროს არავიზე იტყოდა. ვინმეზე რომ გავბრაზდებოდი ხოლმე და შემამჩნევდა წყენას, მეტყოდა, აბა დაჯექი და კარგად დაფიქრდი, რატომ მოიქცა ასე, ალბათ პრობლემა ჰქონდა რამე, თორემ არ არსებობს, ცუდი არ ენდონებოდაო“, - ამბობს ერეკლე, რომელსაც თვითონაც გული უჩუყდება და ეტირება. <br> <br> 73 წლის ექიმ-რეანიმატოლოგს, კორონავირუსი 28 ნოემბერს დაუდასტურდა. ერეკლე იხსენებს, რომ გარდა კლინიკაში მუშაობისა, მამა პაციენტებს სახლშიც აკითხავდა. ფიქრობს, რომ ის, სავარადუდოდ, ერთ-ერთი ასეთი ვიზიტისას დაინფიცირდა. <br> <br> „მამა თელავისა და ყვარლის კლინიკებში მუშაობდა, თუმცა, ბინაზეც დადიოდა პაციენტებთან. პირადად ურეკავდნენ ავადმოფები ან მათი ოჯახის წევრები. მამაც ჩაიცვამდა, დაიხურავდა და მიდიოდა მათ გასასინჯად. ამბობდა, სასწრაფო დახმარება ვერ ასწრებს ყველასთან მისვლას, დახმარება სჭირდებათო“. <br> <br> თვეების განმავლობაში, ოჯახის წევრები, განსაკუთრებით შვილები, ივანეს სთხოვდნენ, მუშაობისთვის თავი დაენებებინა: <br> „სასტიკ უარზე იყო. ერთ დღესაც, ისევ რომ ვთხოვე, იქნებ შეეშვა-მეთქი მუშაობას, მომიბრუნდა და მითხრა, რა გამოდის, ომში დავყარო ფარ-ხმალიო? ეს იყო და ეს. ამ საკითხზე მე მასთან ხმა აღარ ამომიღია“. <br> <br> ექიმი ინფიცირებიდან რამდენიმე დღე სახლში მკურნალობდა, თუმცა, მდგომარეობის დამძიმების შემდეგ, ჯერ თელავის კლინიკაში გადაიყვანეს, შემდეგ კი თბილისში, კლინიკა „ნიუ ვიჟენში“: <br> „ერთი წამითაც არ გვიგრძვნია, რომ ეშინოდა. დარწმუნებული იყო, რომ დაამარცხებდა დაავადებას. მამას აბსოლუტურად არაფერი არ აწუხებდა, ჯანმრთელი იყო. ხან თქვეს შაქარი ჰქონდაო, ხან რა და ხან რა. ტყუილია, მამა ჯანმრთელი იყო, თითიც კი არასდროს წამოსტკიებია“. <br><br> ივანე ამბარდანაშვილს ცოლი, სამი შვილი და ხუთი შვილიშვილი დარჩა. მეექვსე შვილიშვილი გარდაცვალებიდან 10 დღეში შეეძინა.'
+        },
+        {
+            id:13,
+            data_id:13,
+            mainUserId:13,
+            age:'84 წლის',
+            img_src:'https://gdb.rferl.org/DB45BB69-C273-4F04-B966-0F21A9F1C0A3.jpg',
+            title:'აკაკი ყურაშვილი',
+            text:'„მამა პროფესიონალი მეღვინე იყო. საქმის გამო, წლების განმავლობაში, რუსეთში ვცხოვრობდით. ქალაქ სამარაში, ღვინის ქარხნის დირექტორი იყო, მაგრამ თვალი სულ საქართველოსკენ ეჭირა. ასეც მოხდა, 90-იან წლებში, საქართველოში დავბრუნდით“, - გვიყვება ნინო ყურაშვილი, 84 წლის აკაკის შვილი. ნინომ მამა რამდენიმე დღის წინ დაკრძალა. <br> <br> აკაკუ ყურაშვილი გასული საუკუნის 60-იანი წლების მიწურულიდან თითქმის 20 წლის განმავლობაში, ქალაქ სამარაში, ღვინის ქარხანაში, დირექტორის პოზიციაზე მუშაობდა. აკაკიმ ქარხნის ეზოში საქართველოდან ჩატანილი ალუბლის, ნუშის, ატმისა და გარგრის ნერგებით ხე-ხილის ბაღი გააშენა.  <br><br> აკაკი 16 დეკემბერს გარდაიცვალა. ნოემბრის მიწურულს, მთელი ოჯახი კორონავირუსით დაავადდა. აკაკი და მისი მეუღლე ერთად დააწვინეს კლინიკაში. მეღვინის გადარჩენა ექიმებმა ვეღარ შეძლეს: <br> „ახლაალბათ ყველაზე მეტად დედას უჭირს. ერთად იწვნენ კლინიკაში. დედა დაბრუნდა სახლში, მამა ვეღარ. სამწუხაროდ, ბოლო წლებში მამა ავადმყოფობდა და ეს ვირუსი მისთვის განაჩები აღმოჩნდა“. <br><br> ნინოს ბევრი რამ შემორჩა მამისგან მოსაგონარი, მაგრამ ყველაზე მეტად მის მახსოვრობას ცხოვრების ბოლომდე მამასთან ერთად პარიზში გატარებული რამდენიმე დღე დარჩება: <br> „გასული საუკუნის 20-იან წლებში მამას ახლო ნათესავები საფრანგეთში წავიდნენ საცხოვრებლად. სამწუხაროდ, ათწლეულების განმავლობაში მათთან და მათ შთამომავლებთან კავშირი გაწყდა. მამამ მოახერხა და ისინი იპობა. 1993 წელს, ჩაბნელებული თბილისიდან და ჩაბნელებული აეროპორტიდან მე და მამა პარიზში გავფრინდით. მაშინ სტუდენტი ვიყავი. ათასი ემოციები ირეოდა ერთმანეთში. ზღაპრული პარიზი, ნათესავებთან პირველი შეხვედრის ღელვა. მამამ მოახერხა და გაწყვეტილი კავშირი აღვადგინეთ. დღემდე გრძელდება ეს ურთიერთობა, რისთვისაც მამაჩემის უზომოდ მადლიერი ვარ“. '
         }
         
     ]
+
+
+
+
     $(window).scroll(function(){
         let currentSectionId;
         let getCurrModalBoxClassArr=document.querySelectorAll('.avatar-image');
@@ -776,10 +1238,7 @@
             if(peoplesInfo[i]){
                 eachAvatarMU = drawEachManMU(peoplesInfo[i].portrait_img_src,peoplesInfo[i].userName,peoplesInfo[i].profession,peoplesInfo[i].age,i,peoplesInfo[i].data_id,peoplesInfo[i].info_url,peoplesInfo[i].mainUserId);
                 $(".avatars-main-container").append(eachAvatarMU);
-                
-                if(peoplesInfo[i].text){
-                    // $('.avatar img').css('border','2px solid #e77454')
-                }
+               
             }
             else{
                 let correctImgSrc=drawEachNonInfoMu();
@@ -791,7 +1250,6 @@
     
     function drawPersonSection(){
         for (let i = 0; i < personsHistoryArray.length; i++) {
-            // console.log("personsHistoryArray[i].mainUserId",personsHistoryArray[i].mainUserId)
             $(".section_common_container").append(drawSectionsMU(personsHistoryArray[i].text,personsHistoryArray[i].title,personsHistoryArray[i].img_src,i,personsHistoryArray[i].mainUserId,i,personsHistoryArray[i].age));
             $(`.avatar-image[main_user_id='${i}']`).css('border','2px solid #e77454');
         }
@@ -801,7 +1259,6 @@
         let currentId=parseInt($(this).attr("id"));
         
       
-        // console.log("currentDataId",currentDataId)
         let getCurrModalBoxClassArr=document.querySelectorAll('.entry-inner');
         for (let i = 0; i < getCurrModalBoxClassArr.length; i++) {
             let currentClassId=parseInt($(getCurrModalBoxClassArr[i]).attr("id"));
@@ -821,7 +1278,8 @@
         let currentId=parseInt($(this).attr("id"));
         let getCurrModalBoxClassArr=document.querySelectorAll('.entry-inner');
         for (let i = 0; i < getCurrModalBoxClassArr.length; i++) {
-            let currentClassId=parseInt($(getCurrModalBoxClassArr[i]).attr("id"));
+            let cu
+            rrentClassId=parseInt($(getCurrModalBoxClassArr[i]).attr("id"));
             $(`.avatar#${currentId} img`).css("z-index","0")
             $(`.vertical-align-avatars#${currentId} img`).css("opacity","0.5")
             $(getCurrModalBoxClassArr[i]).css("display","none");
